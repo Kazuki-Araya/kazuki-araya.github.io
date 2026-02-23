@@ -310,13 +310,12 @@ if(typingEl){
 
   function type(){
     if(i < text.length){
-      typingEl.textContent += text[i];
+      typingEl.innerHTML += text.charAt(i);
       i++;
-      setTimeout(type, 50);
+      setTimeout(type,50);
     }
   }
-
-  window.addEventListener("load", type);
+  type();
 }
 
 if(avatar && bgMusic){
@@ -353,11 +352,10 @@ function createSakura(){
   s.style.left=Math.random()*100+"vw";
   s.style.top="-10px";
   s.style.fontSize="20px";
-  const duration = (5+Math.random()*5)+"s";
-  s.style.animation = `fall ${duration} linear forwards`;
+  s.style.animation="fall linear forwards";
+  s.style.animationDuration=(5+Math.random()*5)+"s";
   document.body.appendChild(s);
   setTimeout(()=>s.remove(),10000);
-}
 }
 if(window.innerWidth > 768){
   setInterval(createSakura,400);
@@ -375,4 +373,3 @@ if(avatar){
 
 </body>
 </html>
-
