@@ -29,11 +29,9 @@ background-position:center;
 background-attachment:fixed;
 
 
-/* Làm nét ảnh */
 filter: contrast(120%) brightness(108%) saturate(125%);
 }
 
-/* Overlay sharpen */
 body::after{
 content:"";
 position:fixed;
@@ -45,7 +43,7 @@ mix-blend-mode:overlay;
 pointer-events:none;
 }
 
-/* CARD */
+
 .card{
 width:100%;
 max-width:480px;
@@ -65,23 +63,7 @@ box-shadow:
 0 0 30px rgba(255,105,180,0.4);
 }
 
-.card::before{
-content:"";
-position:absolute;
-inset:-3px;
-border-radius:40px;
-background:linear-gradient(45deg,#ff00cc,#ff69b4,#a18cd1,#ff00cc);
-background-size:400%;
-animation:borderMove 6s linear infinite;
-z-index:-1;
-}
 
-@keyframes borderMove{
-0%{background-position:0%}
-100%{background-position:400%}
-}
-
-/* LEFT */
 .left{flex:1;text-align:center;}
 
 .avatar-wrapper{
@@ -128,7 +110,6 @@ transform:scale(1.1);
 box-shadow:0 0 60px #ff1493;
 }
 
-/* RIGHT */
 .right{flex:2;}
 
 h1{
@@ -150,7 +131,6 @@ min-height:22px;
 margin-bottom:20px;
 }
 
-/* LINKS */
 .links{
 display:flex;
 flex-direction:column;
@@ -176,7 +156,6 @@ transform:scale(1.05);
 box-shadow:0 0 25px #ff69b4;
 }
 
-/* Sakura */
 .sakura{
 position:fixed;
 top:-10px;
@@ -189,7 +168,6 @@ pointer-events:none;
 to{transform:translateY(110vh) rotate(360deg);}
 }
 
-/* Mouse Glow */
 .light{
 position:fixed;
 width:300px;
@@ -200,7 +178,6 @@ border-radius:50%;
 transform:translate(-50%,-50%);
 }
 
-/* Secret Mode */
 .secret{
 background:linear-gradient(45deg,#000,#1a001a,#330033);
 }
@@ -268,13 +245,11 @@ transition:0.3s;
 
 <script>
 
-/* ================== GET ELEMENTS ================== */
 const bgMusic = document.getElementById("bgMusic");
 const musicBtn = document.getElementById("musicBtn");
 const avatar = document.getElementById("avatar");
 const typingEl = document.querySelector(".typing");
 
-/* ================== MUSIC SYSTEM ================== */
 if(bgMusic && musicBtn){
 
   document.addEventListener("click", () => {
@@ -324,7 +299,6 @@ if(bgMusic && musicBtn){
   }
 }
 
-/* ================== TYPING EFFECT ================== */
 if(typingEl){
   const text = "∞ Wibu 🌸 Gamer 🎮 Student 📚 Anime Lover 💖";
   let i = 0;
@@ -339,7 +313,6 @@ if(typingEl){
   type();
 }
 
-/* ================== AVATAR PULSE ================== */
 if(avatar && bgMusic){
   setInterval(()=>{
     if(!bgMusic.paused){
@@ -351,7 +324,6 @@ if(avatar && bgMusic){
   },800);
 }
 
-/* ================== MOUSE GLOW ================== */
 const light = document.createElement("div");
 light.style.position="fixed";
 light.style.width="200px";
@@ -368,7 +340,6 @@ document.addEventListener("mousemove",e=>{
   light.style.top=e.clientY+"px";
 });
 
-/* ================== SAKURA EFFECT ================== */
 function createSakura(){
   const s=document.createElement("div");
   s.innerHTML="🌸";
@@ -387,7 +358,6 @@ if(window.innerWidth > 768){
   setInterval(createSakura,900);
 }
 
-/* ================== SECRET MODE ================== */
 if(avatar){
   avatar.addEventListener("dblclick",()=>{
     document.body.classList.toggle("secret");
@@ -397,4 +367,5 @@ if(avatar){
 </script>
 
 </body>
+
 </html>
