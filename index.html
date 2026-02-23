@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kazuki Araya | Trương Đình Hiệp</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Poppins',sans-serif;}
+
+body{
+min-height:100vh;
+margin:0;
+display:flex;
+align-items:center;
+justify-content:center;
+color:white;
+overflow-x:hidden;
+
+background:
+linear-gradient(rgba(0,0,0,0.35),rgba(0,0,0,0.35)),
+url("https://png.pngtree.com/background/20250802/pngtree-a-pink-tree-with-flowers-on-the-water-surrounded-by-white-image_17691469.webp");
+
+background-size:cover;
+background-position:center;
+background-attachment:fixed;
+
+
+/* Làm nét ảnh */
+filter: contrast(120%) brightness(108%) saturate(125%);
+}
+
+/* Overlay sharpen */
+body::after{
+content:"";
+position:fixed;
+inset:0;
+background:
+radial-gradient(circle at center, rgba(255,255,255,0.15), transparent 60%),
+linear-gradient(120deg, transparent, rgba(255,255,255,0.1), transparent);
+mix-blend-mode:overlay;
+pointer-events:none;
+}
+
+/* CARD */
+.card{
+width:100%;
+max-width:480px;
+margin:40px 15px;
+padding:30px 20px;
+border-radius:25px;
+
+background:rgba(255,255,255,0.12);
+backdrop-filter:blur(15px);
+
+display:flex;
+flex-direction:column;
+align-items:center;
+gap:25px;
+
+box-shadow:
+0 0 30px rgba(255,105,180,0.4);
+}
+
+.card::before{
+content:"";
+position:absolute;
+inset:-3px;
+border-radius:40px;
+background:linear-gradient(45deg,#ff00cc,#ff69b4,#a18cd1,#ff00cc);
+background-size:400%;
+animation:borderMove 6s linear infinite;
+z-index:-1;
+}
+
+@keyframes borderMove{
+0%{background-position:0%}
+100%{background-position:400%}
+}
+
+/* LEFT */
+.left{flex:1;text-align:center;}
+
+.avatar-wrapper{
+position:relative;
+display:inline-block;
+animation:float 4s ease-in-out infinite;
+}
+
+@keyframes float{
+0%,100%{transform:translateY(0)}
+50%{transform:translateY(-10px)}
+}
+
+.orbit{
+position:absolute;
+width:220px;
+height:220px;
+border-radius:50%;
+border:2px solid rgba(255,105,180,0.6);
+top:50%;
+left:50%;
+transform:translate(-50%,-50%);
+animation:spin 8s linear infinite;
+box-shadow:0 0 20px #ff69b4;
+}
+
+@keyframes spin{
+from{transform:translate(-50%,-50%) rotate(0deg)}
+to{transform:translate(-50%,-50%) rotate(360deg)}
+}
+
+.avatar{
+width:180px;
+height:180px;
+border-radius:50%;
+object-fit:cover;
+border:5px solid rgba(255,255,255,0.7);
+box-shadow:0 0 40px #ff69b4;
+transition:0.4s;
+}
+
+.avatar:hover{
+transform:scale(1.1);
+box-shadow:0 0 60px #ff1493;
+}
+
+/* RIGHT */
+.right{flex:2;}
+
+h1{
+font-size:38px;
+font-weight:900;
+text-shadow:0 0 25px #ff69b4;
+}
+
+.real-name{
+font-size:15px;
+margin:5px 0 10px;
+opacity:0.9;
+text-shadow:0 0 12px #ff69b4;
+}
+
+.typing{
+font-size:15px;
+min-height:22px;
+margin-bottom:20px;
+}
+
+/* LINKS */
+.links{
+display:flex;
+flex-direction:column;
+gap:14px;
+width:100%;
+}
+
+.link{
+display:flex;
+align-items:center;
+gap:12px;
+padding:14px;
+border-radius:18px;
+text-decoration:none;
+color:white;
+background:rgba(255,255,255,0.15);
+transition:0.3s;
+font-weight:500;
+}
+
+.link:hover{
+transform:scale(1.05);
+box-shadow:0 0 25px #ff69b4;
+}
+
+/* Sakura */
+.sakura{
+position:fixed;
+top:-10px;
+font-size:20px;
+animation:fall linear infinite;
+pointer-events:none;
+}
+
+@keyframes fall{
+to{transform:translateY(110vh) rotate(360deg);}
+}
+
+/* Mouse Glow */
+.light{
+position:fixed;
+width:300px;
+height:300px;
+background:radial-gradient(circle,rgba(255,255,255,0.3),transparent 70%);
+pointer-events:none;
+border-radius:50%;
+transform:translate(-50%,-50%);
+}
+
+/* Secret Mode */
+.secret{
+background:linear-gradient(45deg,#000,#1a001a,#330033);
+}
+
+@media(max-width:768px){
+.card{flex-direction:column;text-align:center;}
+.links{grid-template-columns:1fr;}
+}
+</style>
+</head>
+
+<body>
+
+<div class="light" id="light"></div>
+
+<div class="card">
+
+<div class="left">
+<div class="avatar-wrapper">
+<div class="orbit"></div>
+<img src="https://i.imgur.com/UJq7TS4.jpeg" class="avatar" id="avatar">
+</div>
+</div>
+
+<div class="right">
+<h1>Kazuki Araya</h1>
+<div class="real-name">(Trương Đình Hiệp)</div>
+<div class="typing"></div>
+
+<div class="links">
+<a class="link" href="tel:+84974841943"><i class="fa-solid fa-phone"></i> 0974841943</a>
+<a class="link" href="mailto:dinhhiep22082009@gmail.com"><i class="fa-solid fa-envelope"></i> Gmail</a>
+<a class="link" href="https://web.facebook.com/kazukii.araya/" target="_blank"><i class="fa-brands fa-facebook"></i> Facebook</a>
+<a class="link" href="https://www.instagram.com/kazuki_araya2208/" target="_blank"><i class="fa-brands fa-instagram"></i> Instagram</a>
+<a class="link" href="https://www.tiktok.com/@kazuki.araya2208" target="_blank"><i class="fa-brands fa-tiktok"></i> TikTok</a>
+<a class="link" href="https://x.com/omentino2208" target="_blank"><i class="fa-brands fa-x-twitter"></i> X</a>
+<a class="link" href="https://www.threads.com/@kazuki_araya2208" target="_blank"><i class="fa-brands fa-threads"></i> Threads</a>
+<a class="link" href="https://locket.cam/kazuki.araya" target="_blank"><i class="fa-solid fa-lock"></i> Locket</a>
+<a class="link" href="https://t.me/kazuki_araya" target="_blank"><i class="fa-brands fa-telegram"></i> Telegram</a>
+</div>
+</div>
+</div>
+
+<audio id="bgMusic" loop>
+  <source src="https://files.catbox.moe/4bjjfg.mp3" type="audio/mpeg">
+</audio>
+
+<button id="musicBtn" style="
+position:fixed;
+bottom:25px;
+right:25px;
+padding:12px 18px;
+border:none;
+border-radius:50px;
+background:linear-gradient(45deg,#ff69b4,#ff1493);
+color:white;
+font-weight:600;
+cursor:pointer;
+box-shadow:0 0 20px #ff69b4;
+z-index:9999;
+transition:0.3s;
+">
+🎵 Play
+</button>
+
+<script>
+
+/* ================== GET ELEMENTS ================== */
+const bgMusic = document.getElementById("bgMusic");
+const musicBtn = document.getElementById("musicBtn");
+const avatar = document.getElementById("avatar");
+const typingEl = document.querySelector(".typing");
+
+/* ================== MUSIC SYSTEM ================== */
+if(bgMusic && musicBtn){
+
+  document.addEventListener("click", () => {
+    if (bgMusic.paused) {
+      bgMusic.volume = 0;
+      bgMusic.play();
+      fadeIn();
+      musicBtn.innerHTML = "⏸ Pause";
+    }
+  }, { once: true });
+
+  musicBtn.addEventListener("click", () => {
+    if (bgMusic.paused) {
+      bgMusic.play();
+      fadeIn();
+      musicBtn.innerHTML = "⏸ Pause";
+    } else {
+      fadeOut();
+      musicBtn.innerHTML = "🎵 Play";
+    }
+  });
+
+  function fadeIn(){
+    let vol = 0;
+    bgMusic.volume = 0;
+    const fade = setInterval(() => {
+      if (vol < 1) {
+        vol += 0.05;
+        bgMusic.volume = vol;
+      } else {
+        clearInterval(fade);
+      }
+    }, 100);
+  }
+
+  function fadeOut(){
+    let vol = bgMusic.volume;
+    const fade = setInterval(() => {
+      if (vol > 0.05) {
+        vol -= 0.05;
+        bgMusic.volume = vol;
+      } else {
+        bgMusic.pause();
+        clearInterval(fade);
+      }
+    }, 100);
+  }
+}
+
+/* ================== TYPING EFFECT ================== */
+if(typingEl){
+  const text = "∞ Wibu 🌸 Gamer 🎮 Student 📚 Anime Lover 💖";
+  let i = 0;
+
+  function type(){
+    if(i < text.length){
+      typingEl.innerHTML += text.charAt(i);
+      i++;
+      setTimeout(type,50);
+    }
+  }
+  type();
+}
+
+/* ================== AVATAR PULSE ================== */
+if(avatar && bgMusic){
+  setInterval(()=>{
+    if(!bgMusic.paused){
+      avatar.style.transform="scale(1.05)";
+      setTimeout(()=>{
+        avatar.style.transform="scale(1)";
+      },200);
+    }
+  },800);
+}
+
+/* ================== MOUSE GLOW ================== */
+const light = document.createElement("div");
+light.style.position="fixed";
+light.style.width="200px";
+light.style.height="200px";
+light.style.borderRadius="50%";
+light.style.background="radial-gradient(circle, rgba(255,182,193,0.35) 0%, transparent 70%)";
+light.style.pointerEvents="none";
+light.style.transform="translate(-50%, -50%)";
+light.style.zIndex="0";
+document.body.appendChild(light);
+
+document.addEventListener("mousemove",e=>{
+  light.style.left=e.clientX+"px";
+  light.style.top=e.clientY+"px";
+});
+
+/* ================== SAKURA EFFECT ================== */
+function createSakura(){
+  const s=document.createElement("div");
+  s.innerHTML="🌸";
+  s.style.position="fixed";
+  s.style.left=Math.random()*100+"vw";
+  s.style.top="-10px";
+  s.style.fontSize="20px";
+  s.style.animation="fall linear forwards";
+  s.style.animationDuration=(5+Math.random()*5)+"s";
+  document.body.appendChild(s);
+  setTimeout(()=>s.remove(),10000);
+}
+if(window.innerWidth > 768){
+  setInterval(createSakura,400);
+}else{
+  setInterval(createSakura,900);
+}
+
+/* ================== SECRET MODE ================== */
+if(avatar){
+  avatar.addEventListener("dblclick",()=>{
+    document.body.classList.toggle("secret");
+  });
+}
+
+</script>
+
+</body>
+</html>
