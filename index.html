@@ -93,22 +93,29 @@ body{
 .container{
   width:100%;
   max-width:420px;
-  max-height:85vh;      
-  overflow-y:auto;     
-  overflow-x:hidden;
+  max-height:85vh;
+  overflow-y:auto;
   text-align:center;
-  background: rgba(255, 105, 180, 0.25);
-  backdrop-filter: blur(25px);
+  overflow-x:hidden;   
+  backdrop-filter:blur(30px);
+  background:linear-gradient(
+    135deg,
+    rgba(255,182,193,0.25),
+    rgba(255,105,180,0.25),
+    rgba(255,20,147,0.25)
+  );
+
   padding:40px 25px;
   border-radius:30px;
-  border:1px solid rgba(255,255,255,0.15);
-  box-shadow:0 0 40px rgba(255,105,180,0.6);
+  border:1px solid rgba(255,255,255,0.25);
+
+  box-shadow:
+    0 0 30px rgba(255,105,180,0.6),
+    0 0 60px rgba(255,20,147,0.4);
+
   animation:fadeIn 1.2s ease;
-  -webkit-overflow-scrolling: touch;
-  scrollbar-width: thin;
-  scrollbar-color: #ff69b4 transparent;
-  position: relative;
-  z-index: 2;
+  position:relative;
+  z-index:2;
 }
 .container::-webkit-scrollbar{
   width:8px;
@@ -173,12 +180,49 @@ h2{
   color:#ffd6f5;
   white-space: pre-line;
 }
-
 .links{
   display:flex;
   flex-direction:column;
   gap:15px;
-  margin-bottom:90px;
+  margin-bottom:40px;
+  width:100%;
+}
+
+.link{
+  display:block;
+}
+
+.link{
+  position:relative;
+  overflow:hidden;
+  text-decoration:none;
+  padding:15px;
+  border-radius:18px;
+
+  background:linear-gradient(
+    135deg,
+    rgba(255,255,255,0.2),
+    rgba(255,182,193,0.25)
+  );
+
+  border:1px solid rgba(255,255,255,0.3);
+  color:white;
+  font-weight:500;
+  transition:0.4s ease;
+}
+
+.link:hover{
+  background:linear-gradient(
+    135deg,
+    #ff9ecf,
+    #ff69b4
+  );
+
+  box-shadow:
+    0 0 20px #ff69b4,
+    0 0 40px #ff1493;
+
+  transform:translateY(-4px) scale(1.05);
 }
 
 .link{
@@ -216,7 +260,7 @@ h2{
 
 .music-btn, .theme-btn{
   position:absolute;
-  top:90px;   /* 👈 ngang avatar */
+  top:90px;  
   width:42px;
   height:42px;
   border-radius:50%;
@@ -245,10 +289,20 @@ h2{
 
 .light{
   background:
-  linear-gradient(rgba(255,255,255,0.4),rgba(255,255,255,0.4)),
+  linear-gradient(rgba(255,255,255,0.5),rgba(255,255,255,0.5)),
   url("https://png.pngtree.com/background/20250802/pngtree-a-pink-tree-with-flowers-on-the-water-surrounded-by-white-image_17691469.webp")
   no-repeat center center/cover;
   color:#111;
+}
+
+body.light .container{
+  background:linear-gradient(
+    135deg,
+    rgba(255,255,255,0.8),
+    rgba(255,192,203,0.6)
+  );
+  box-shadow:
+    0 0 25px rgba(255,105,180,0.4);
 }
 
 .sakura{
@@ -291,6 +345,30 @@ h2{
     transform: translateY(110vh) translateX(0px) rotate(360deg);
     opacity: 0;
   }
+}
+/* ===== Sakura Premium Glow Border ===== */
+
+.container::before{
+  content:"";
+  position:absolute;
+  inset:-2px;
+  border-radius:32px;
+  background:linear-gradient(
+    45deg,
+    #ff69b4,
+    #ff1493,
+    #ffb6c1,
+    #ff69b4
+  );
+  z-index:-1;
+  filter:blur(15px);
+  opacity:0.6;
+  animation:glowBorder 6s linear infinite;
+}
+
+@keyframes glowBorder{
+  0%{transform:rotate(0deg);}
+  100%{transform:rotate(360deg);}
 }
 
 </style>
