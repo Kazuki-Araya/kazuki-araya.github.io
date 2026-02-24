@@ -93,6 +93,9 @@ body{
 .container{
   width:100%;
   max-width:420px;
+  max-height:85vh;      
+  overflow-y:auto;     
+  overflow-x:hidden;
   text-align:center;
   backdrop-filter:blur(25px);
   background:rgba(0,0,0,0.55);
@@ -101,6 +104,25 @@ body{
   border:1px solid rgba(255,255,255,0.15);
   box-shadow:0 0 40px rgba(255,105,180,0.6);
   animation:fadeIn 1.2s ease;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: thin;
+  scrollbar-color: #ff69b4 transparent;
+  position: relative;
+  z-index: 2;
+}
+.container::-webkit-scrollbar{
+  width:8px;
+}
+
+.container::-webkit-scrollbar-track{
+  background:rgba(255,255,255,0.05);
+  border-radius:10px;
+}
+
+.container::-webkit-scrollbar-thumb{
+  background:linear-gradient(180deg,#ffb6d9,#ff69b4);
+  border-radius:10px;
+  box-shadow:0 0 10px #ff69b4;
 }
 
 @keyframes fadeIn{
@@ -149,12 +171,14 @@ h2{
   font-size:14px;
   margin-bottom:25px;
   color:#ffd6f5;
+  white-space: pre-line;
 }
 
 .links{
   display:flex;
   flex-direction:column;
   gap:15px;
+  margin-bottom:90px;
 }
 
 .link{
@@ -191,26 +215,32 @@ h2{
 }
 
 .music-btn, .theme-btn{
-  position:fixed;
-  bottom:25px;
-  border:none;
-  border-radius:50px;
-  padding:12px 18px;
-  cursor:pointer;
+  position:absolute;
+  top:90px;   /* 👈 ngang avatar */
+  width:42px;
+  height:42px;
+  border-radius:50%;
+  border:1px solid rgba(255,255,255,0.3);
+
+  background:rgba(255,255,255,0.08);
+  backdrop-filter:blur(10px);
+
   color:white;
-  font-weight:600;
-  box-shadow:0 0 20px #ff69b4;
-  z-index:10;
+  font-size:16px;
+  cursor:pointer;
+  transition:0.3s ease;
 }
-
-.music-btn{
-  right:25px;
-  background:linear-gradient(45deg,#ff69b4,#ff1493);
-}
-
 .theme-btn{
   left:25px;
-  background:linear-gradient(45deg,#8e2de2,#ff69b4);
+}
+.music-btn{
+  right:25px;
+}
+.music-btn:hover,
+.theme-btn:hover{
+  box-shadow:0 0 15px #ff69b4,
+             0 0 30px #ff1493;
+  transform:scale(1.1);
 }
 
 .light{
@@ -235,7 +265,34 @@ h2{
 
 @media(max-width:768px){
   body{padding:40px 15px;}
+}@keyframes sakuraFall{
+  0%{
+    transform: translateY(-20px) rotate(0deg);
+    opacity: 0.9;
+  }
+  100%{
+    transform: translateY(110vh) rotate(360deg);
+    opacity: 0;
+  }
+    0%{
+    transform: translateY(-20px) translateX(0px) rotate(0deg);
+    opacity: 0.9;
+  }
+  25%{
+    transform: translateY(25vh) translateX(-20px) rotate(90deg);
+  }
+  50%{
+    transform: translateY(50vh) translateX(20px) rotate(180deg);
+  }
+  75%{
+    transform: translateY(75vh) translateX(-15px) rotate(270deg);
+  }
+  100%{
+    transform: translateY(110vh) translateX(0px) rotate(360deg);
+    opacity: 0;
+  }
 }
+
 </style>
 </head>
 
@@ -272,10 +329,11 @@ h2{
 <button class="theme-btn" onclick="toggleTheme()">🌙</button>
 
 <audio id="bg-music" loop>
-  <audio id="click-sound">
-  <source src="https://www.myinstants.com/media/sounds/mouse-click.mp3" type="audio/mpeg">
-</audio>
   <source src="https://files.catbox.moe/4bjjfg.mp3" type="audio/mpeg">
+</audio>
+
+<audio id="click-sound">
+  <source src="https://www.myinstants.com/media/sounds/mouse-click.mp3" type="audio/mpeg">
 </audio>
 
 <script>
@@ -302,24 +360,28 @@ function toggleTheme(){
   }
 }
 
-document.addEventListener("mousemove",function(e){
-  document.body.style.backgroundPosition =
-  (50 - e.clientX/50) + "% " +
-  (50 - e.clientY/50) + "%";
-});
+if (window.innerWidth > 768) {
 
-document.addEventListener("mousemove",function(e){
-  let spark=document.createElement("div");
-  spark.innerHTML="✨";
-  spark.style.position="fixed";
-  spark.style.left=e.clientX+"px";
-  spark.style.top=e.clientY+"px";
-  spark.style.pointerEvents="none";
-  spark.style.fontSize="12px";
-  spark.style.transition="1s";
-  document.body.appendChild(spark);
-  setTimeout(()=>spark.remove(),800);
-});
+  document.addEventListener("mousemove",function(e){
+    document.body.style.backgroundPosition =
+    (50 - e.clientX/50) + "% " +
+    (50 - e.clientY/50) + "%";
+  });
+
+  document.addEventListener("mousemove",function(e){
+    let spark=document.createElement("div");
+    spark.innerHTML="❤️";
+    spark.style.position="fixed";
+    spark.style.left=e.clientX+"px";
+    spark.style.top=e.clientY+"px";
+    spark.style.pointerEvents="none";
+    spark.style.fontSize="12px";
+    spark.style.transition="1s";
+    document.body.appendChild(spark);
+    setTimeout(()=>spark.remove(),800);
+  });
+
+}
 
 document.querySelectorAll(".link").forEach(link=>{
   link.addEventListener("click",function(e){
@@ -340,16 +402,70 @@ document.querySelector(".avatar").addEventListener("dblclick",()=>{
   document.body.style.background="black";
 });
 
-for(let i=0;i<30;i++){
-  let s=document.createElement("div");
-  s.className="sakura";
-  s.innerHTML="🌸";
-  s.style.left=Math.random()*100+"vw";
-  s.style.animationDuration=(6+Math.random()*5)+"s";
-  s.style.fontSize=(14+Math.random()*12)+"px";
-  document.body.appendChild(s);
+
+function createSakura(){
+
+  const sakura = document.createElement("div");
+  sakura.innerHTML = "🌸";
+
+  const depth = Math.random(); 
+  const size = 14 + depth * 20;
+  const duration = 6000 + depth * 3000;
+  const startX = Math.random() * window.innerWidth;
+  const wind = (Math.random() - 0.5) * 80; // gió trái/phải random
+
+  sakura.style.position = "fixed";
+  sakura.style.top = "-20px";
+  sakura.style.left = startX + "px";
+  sakura.style.fontSize = size + "px";
+  sakura.style.pointerEvents = "none";
+  sakura.style.zIndex = "1";
+  sakura.style.opacity = 0.7 + depth * 0.3;
+  sakura.style.willChange = "transform";
+
+  sakura.animate([
+    { transform: `translate(0px, 0px) rotate(0deg)` },
+    { transform: `translate(${wind}px, 110vh) rotate(360deg)` }
+  ], {
+    duration: duration,
+    easing: "linear",
+    fill: "forwards"
+  });
+
+  document.body.appendChild(sakura);
+
+  const trailInterval = setInterval(()=>{
+    const rect = sakura.getBoundingClientRect();
+
+    const spark = document.createElement("div");
+    spark.innerHTML = "✨";
+    spark.style.position = "fixed";
+    spark.style.left = rect.left + "px";
+    spark.style.top = rect.top + "px";
+    spark.style.fontSize = "10px";
+    spark.style.pointerEvents = "none";
+    spark.style.opacity = "0.8";
+    spark.style.zIndex = "1";
+    spark.style.transition = "1s ease-out";
+
+    document.body.appendChild(spark);
+
+    setTimeout(()=>{
+      spark.style.opacity="0";
+      spark.style.transform="translateY(15px)";
+      setTimeout(()=>spark.remove(),1000);
+    },50);
+
+  },300);
+
+  setTimeout(()=>{
+    clearInterval(trailInterval);
+    sakura.remove();
+  }, duration);
 }
-const text = "Wibu 🌸 Gamer 🎮 Student 📚 Anime Lover 💖";
+
+setInterval(createSakura, 100);
+const text = "Wibu 🌸 Gamer 🎮 Student 📚 Anime Lover 💖\n🏦MB:84822082009";
 let i = 0;
 function typingEffect(){
   if(i < text.length){
@@ -369,4 +485,3 @@ if(localStorage.getItem("theme") === "light"){
 
 </body>
 </html>
-
