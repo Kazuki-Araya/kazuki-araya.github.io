@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Kazuki Araya |Trương Đình Hiệp</title>
+<title>Kazuki Araya | Trương Đình Hiệp</title>
 
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
@@ -16,173 +16,244 @@
 }
 
 body{
-  background:url("https://png.pngtree.com/background/20250802/pngtree-a-pink-tree-with-flowers-on-the-water-surrounded-by-white-image_17691469.webp") no-repeat center center/cover;
+  background:
+  linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)),
+  url("https://png.pngtree.com/background/20250802/pngtree-a-pink-tree-with-flowers-on-the-water-surrounded-by-white-image_17691469.webp")
+  no-repeat center center/cover;
+  background-attachment:fixed;
+
   color:white;
   display:flex;
   justify-content:center;
-  align-items:center;
   min-height:100vh;
+  padding:60px 20px;
   overflow-x:hidden;
-  overflow-y:auto;
+  scroll-behavior:smooth;
+  transition:0.5s;
+}
+
+#intro{
+  position:fixed;
+  inset:0;
+  background:black;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  flex-direction:column;
+  z-index:9999;
+  animation:fadeOut 1.5s forwards;
+  animation-delay:3s;
+}
+
+.intro-text{
+  color:#ff69b4;
+  font-size:34px;
+  text-shadow:0 0 10px #ff1493;
+  animation:introGlow 2.5s ease forwards;
+}
+
+.flash{
+  position:absolute;
+  width:100%;
+  height:100%;
+  background:white;
+  opacity:0;
+  animation:flashBang 0.6s ease forwards;
+  animation-delay:2.5s;
+}
+
+@keyframes introGlow{
+  0%{
+    opacity:0;
+    transform:scale(0.7);
+    text-shadow:0 0 0px #ff1493;
+  }
+  50%{
+    opacity:1;
+    transform:scale(1.1);
+    text-shadow:0 0 40px #ff69b4;
+  }
+  100%{
+    transform:scale(1);
+    text-shadow:0 0 25px #ff1493;
+  }
+}
+
+@keyframes flashBang{
+  0%{opacity:0;}
+  50%{opacity:0.9;}
+  100%{opacity:0;}
+}
+
+@keyframes fadeOut{
+  to{opacity:0; visibility:hidden;}
+}
+
+.container{
+  width:100%;
+  max-width:420px;
+  text-align:center;
+  backdrop-filter:blur(25px);
+  background:rgba(0,0,0,0.55);
+  padding:40px 25px;
+  border-radius:30px;
+  border:1px solid rgba(255,255,255,0.15);
+  box-shadow:0 0 40px rgba(255,105,180,0.6);
+  animation:fadeIn 1.2s ease;
+}
+
+@keyframes fadeIn{
+  from{opacity:0; transform:translateY(30px);}
+  to{opacity:1; transform:translateY(0);}
+}
+
+.avatar{
+  width:130px;
+  height:130px;
+  border-radius:50%;
+  border:4px solid #ffcce6;
+  box-shadow:0 0 20px #ffb6e6,0 0 50px rgba(255,105,180,0.5);
+  margin-bottom:20px;
+  transition:0.4s;
+}
+
+.avatar:hover{
+  transform:scale(1.08) rotate(3deg);
+}
+@keyframes glow{
+  0%{box-shadow:0 0 15px #ff69b4;}
+  50%{box-shadow:0 0 40px #ff1493;}
+  100%{box-shadow:0 0 15px #ff69b4;}
+}
+
+.avatar{
+  animation:glow 3s infinite;
+}
+
+h2{
+  font-size:26px;
+  margin-bottom:8px;
+  text-shadow:0 0 20px #ff69b4;
+}
+.real-name{
+  font-size:15px;
+  font-weight:500;
+  margin-top:4px;
+  margin-bottom:15px;
+  color:#ffd6f5;
+  letter-spacing:1px;
+  text-shadow:0 0 10px rgba(255,105,180,0.6);
+}
+.bio{
+  font-size:14px;
+  margin-bottom:25px;
+  color:#ffd6f5;
+}
+
+.links{
+  display:flex;
+  flex-direction:column;
+  gap:15px;
+}
+
+.link{
   position:relative;
+  overflow:hidden;
+  text-decoration:none;
+  padding:15px;
+  border-radius:18px;
+  background:rgba(255,255,255,0.18);
+  border:1px solid rgba(255,255,255,0.2);
+  color:white;
+  font-weight:500;
+  transition:0.3s;
+}
+
+.link:hover{
+  background:#ffb6e6;
+  box-shadow:0 0 25px #ff69b4;
+  transform:translateY(-3px) scale(1.04);
+}
+.link::before{
+  content:"";
+  position:absolute;
+  top:0;
+  left:-100%;
+  width:100%;
+  height:100%;
+  background:linear-gradient(120deg,transparent,rgba(255,255,255,0.5),transparent);
+  transition:0.6s;
+}
+
+.link:hover::before{
+  left:100%;
+}
+
+.music-btn, .theme-btn{
+  position:fixed;
+  bottom:25px;
+  border:none;
+  border-radius:50px;
+  padding:12px 18px;
+  cursor:pointer;
+  color:white;
+  font-weight:600;
+  box-shadow:0 0 20px #ff69b4;
+  z-index:10;
+}
+
+.music-btn{
+  right:25px;
+  background:linear-gradient(45deg,#ff69b4,#ff1493);
+}
+
+.theme-btn{
+  left:25px;
+  background:linear-gradient(45deg,#8e2de2,#ff69b4);
+}
+
+.light{
+  background:
+  linear-gradient(rgba(255,255,255,0.4),rgba(255,255,255,0.4)),
+  url("https://png.pngtree.com/background/20250802/pngtree-a-pink-tree-with-flowers-on-the-water-surrounded-by-white-image_17691469.webp")
+  no-repeat center center/cover;
+  color:#111;
 }
 
 .sakura{
   position:fixed;
   top:-10px;
   font-size:18px;
-  animation:fall linear infinite;
-  opacity:0.8;
+  pointer-events:none;
+  animation:fall linear forwards;
 }
 
 @keyframes fall{
-  to{
-    transform:translateY(110vh) rotate(360deg);
-  }
+  to{transform:translateY(110vh) rotate(360deg);}
 }
 
-.container{
-  width:90%;
-  max-width:400px;
-  text-align:center;
-  backdrop-filter:blur(25px);
-  -webkit-backdrop-filter:blur(25px);
-  background:rgba(0,0,0,0.55); /* tối hơn */
-  padding:35px 25px;
-  border-radius:25px;
-  border:1px solid rgba(255,255,255,0.15);
-  box-shadow:0 0 40px rgba(255,182,230,0.6);
-  position:relative;
-  z-index:2;
-}
-@keyframes softGlow{
-  from{ box-shadow:0 0 20px #ffb6e6; }
-  to{ box-shadow:0 0 50px #ffcce6; }
-}
-
-.avatar{
-  width:120px;
-  height:120px;
-  border-radius:50%;
-  border:4px solid #ffcce6;
-  box-shadow:0 0 20px #ffb6e6;
-  margin-bottom:15px;
-}
-
-.bio{
-  font-size:14px;
-  margin-bottom:18px;
-  color:#ffd6f5;
-  text-shadow:0 0 6px #000;
-}
-
-.links{
-  display:flex;
-  flex-direction:column;
-  gap:12px;
-  max-height:230px;
-  overflow-y:auto;
-  padding-right:6px;
- -webkit-overflow-scrolling: touch;
-  scroll-behavior:smooth;
-}
-
-.link{
-  text-decoration:none;
-  padding:12px;
-  border-radius:15px;
-  background:rgba(255,255,255,0.1);
-  color:white;
-  transition:0.3s;
-}
-
-.link:hover{
-  background:#ffb6e6;
-  box-shadow:0 0 15px #ffb6e6;
-  transform:scale(1.05);
-}
-
-.links::-webkit-scrollbar{
-  width:8px;
-}
-.links::-webkit-scrollbar-thumb{
-  background:#ffcce6;
-  border-radius:10px;
-}
-
-.scroll-btn{
-  position:absolute;
-  bottom:-40px;
-  left:50%;
-  transform:translateX(-50%);
-  font-size:32px;
-  cursor:pointer;
-  animation:animeFloat 2s ease-in-out infinite;
-  text-shadow:
-    0 0 10px #ffb6e6,
-    0 0 20px #ff69b4;
-  transition:0.3s;
-}
-
-.scroll-btn:hover{
-  transform:translateX(-50%) scale(1.2) rotate(10deg);
-}
-
-@keyframes animeFloat{
-  0%,100%{ transform:translate(-50%,0); }
-  50%{ transform:translate(-50%,8px); }
-}
-
-.music-btn{
-  position:absolute;
-  top:-40px;
-  right:0;
-  background:#ffcce6;
-  border:none;
-  border-radius:20px;
-  padding:8px 12px;
-  cursor:pointer;
-  color:#3a0a3f;
-  font-weight:bold;
-  box-shadow:0 0 10px #ffb6e6;
-}
-
-.visualizer{
-  display:flex;
-  justify-content:center;
-  align-items:flex-end;
-  gap:4px;
-  margin-top:15px;
-  height:40px;
-}
-
-.bar{
-  width:4px;
-  background:#ffcce6;
-  animation:wave 1s infinite ease-in-out;
-}
-
-.bar:nth-child(2){animation-delay:0.2s;}
-.bar:nth-child(3){animation-delay:0.4s;}
-.bar:nth-child(4){animation-delay:0.6s;}
-.bar:nth-child(5){animation-delay:0.8s;}
-
-@keyframes wave{
-  0%,100%{height:10px;}
-  50%{height:35px;}
+@media(max-width:768px){
+  body{padding:40px 15px;}
 }
 </style>
 </head>
 
 <body>
+
+<div id="intro">
+  <h1 class="intro-text">Kazuki Araya 🌸</h1>
+  <div class="flash"></div>
+</div>
 <div class="container">
-<button class="music-btn" onclick="toggleMusic()">🎵 ON</button>
+
 <img src="https://avatarfiles.alphacoders.com/341/thumb-1920-341164.jpg" class="avatar">
+
 <h2>Kazuki Araya</h2>
-<p class="bio">
-   Wibu 🌸 Gamer 🎮 Student 📚 Anime Lover 💖
-         84822082009 Mb bank🏦
-</p>
+<h3 class="real-name">Trương Đình Hiệp</h3>
+
+
+<p class="bio"><span id="typing"></span></p>
+
 <div class="links">
   <a class="link" href="tel:+84974841943"><i class="fa-solid fa-phone"></i> 0974841943</a>
   <a class="link" href="mailto:dinhhiep22082009@gmail.com"><i class="fa-solid fa-envelope"></i> Gmail</a>
@@ -193,51 +264,107 @@ body{
   <a class="link" href="https://www.threads.com/@kazuki_araya2208" target="_blank"><i class="fa-brands fa-threads"></i> Threads</a>
   <a class="link" href="https://locket.cam/kazuki.araya" target="_blank"><i class="fa-solid fa-lock"></i> Locket</a>
   <a class="link" href="https://t.me/kazuki_araya" target="_blank"><i class="fa-brands fa-telegram"></i> Telegram</a>
+
 </div>
-<div class="scroll-btn" onclick="scrollLinks()">
-  🌸
-</div>
-<div class="visualizer">
-  <div class="bar"></div>
-  <div class="bar"></div>
-  <div class="bar"></div>
-  <div class="bar"></div>
-  <div class="bar"></div>
-</div>
-</div>
+
+<button class="music-btn" onclick="toggleMusic()">🎵 Play</button>
+<button class="theme-btn" onclick="toggleTheme()">🌙</button>
+
 <audio id="bg-music" loop>
+  <audio id="click-sound">
+  <source src="https://www.myinstants.com/media/sounds/mouse-click.mp3" type="audio/mpeg">
+</audio>
   <source src="https://files.catbox.moe/4bjjfg.mp3" type="audio/mpeg">
 </audio>
 
 <script>
-function scrollLinks(){
-  document.querySelector('.links').scrollBy({
-    top:150,
-    behavior:'smooth'
-  });
-}
 
 function toggleMusic(){
-  const music = document.getElementById("bg-music");
-  const btn = document.querySelector(".music-btn");
+  const music=document.getElementById("bg-music");
+  const btn=document.querySelector(".music-btn");
   if(music.paused){
     music.play();
-    btn.innerHTML="🎵 OFF";
+    btn.innerHTML="⏸ Pause";
   }else{
     music.pause();
-    btn.innerHTML="🎵 ON";
+    btn.innerHTML="🎵 Play";
   }
 }
 
-for(let i=0;i<25;i++){
-  let sakura=document.createElement("div");
-  sakura.className="sakura";
-  sakura.innerHTML="🌸";
-  sakura.style.left=Math.random()*100+"vw";
-  sakura.style.animationDuration=(5+Math.random()*5)+"s";
-  sakura.style.fontSize=(14+Math.random()*10)+"px";
-  document.body.appendChild(sakura);
+function toggleTheme(){
+  document.body.classList.toggle("light");
+
+  if(document.body.classList.contains("light")){
+    localStorage.setItem("theme","light");
+  }else{
+    localStorage.setItem("theme","dark");
+  }
+}
+
+document.addEventListener("mousemove",function(e){
+  document.body.style.backgroundPosition =
+  (50 - e.clientX/50) + "% " +
+  (50 - e.clientY/50) + "%";
+});
+
+document.addEventListener("mousemove",function(e){
+  let spark=document.createElement("div");
+  spark.innerHTML="✨";
+  spark.style.position="fixed";
+  spark.style.left=e.clientX+"px";
+  spark.style.top=e.clientY+"px";
+  spark.style.pointerEvents="none";
+  spark.style.fontSize="12px";
+  spark.style.transition="1s";
+  document.body.appendChild(spark);
+  setTimeout(()=>spark.remove(),800);
+});
+
+document.querySelectorAll(".link").forEach(link=>{
+  link.addEventListener("click",function(e){
+    document.getElementById("click-sound").play();
+    let heart=document.createElement("div");
+    heart.innerHTML="💖";
+    heart.style.position="fixed";
+    heart.style.left=e.clientX+"px";
+    heart.style.top=e.clientY+"px";
+    heart.style.fontSize="18px";
+    heart.style.pointerEvents="none";
+    document.body.appendChild(heart);
+    setTimeout(()=>heart.remove(),800);
+  });
+});
+
+document.querySelector(".avatar").addEventListener("dblclick",()=>{
+  document.body.style.background="black";
+});
+
+for(let i=0;i<30;i++){
+  let s=document.createElement("div");
+  s.className="sakura";
+  s.innerHTML="🌸";
+  s.style.left=Math.random()*100+"vw";
+  s.style.animationDuration=(6+Math.random()*5)+"s";
+  s.style.fontSize=(14+Math.random()*12)+"px";
+  document.body.appendChild(s);
+}
+const text = "Wibu 🌸 Gamer 🎮 Student 📚 Anime Lover 💖";
+let i = 0;
+function typingEffect(){
+  if(i < text.length){
+    document.getElementById("typing").innerHTML += text.charAt(i);
+    i++;
+    setTimeout(typingEffect, 50);
+  }
+}
+typingEffect();
+window.addEventListener("scroll",()=>{
+  document.body.style.backgroundPositionY = window.scrollY * 0.3 + "px";
+});
+if(localStorage.getItem("theme") === "light"){
+  document.body.classList.add("light");
 }
 </script>
+
 </body>
 </html>
