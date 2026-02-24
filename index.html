@@ -16,7 +16,7 @@
 }
 
 body{
-  background: radial-gradient(circle at top,#ffd6f6,#3a0a3f 70%);
+  background:url("https://png.pngtree.com/background/20250802/pngtree-a-pink-tree-with-flowers-on-the-water-surrounded-by-white-image_17691469.webp") no-repeat center center/cover;
   color:white;
   display:flex;
   justify-content:center;
@@ -52,6 +52,8 @@ body{
   animation:softGlow 3s infinite alternate;
   position:relative;
   z-index:2;
+  backdrop-filter: blur(25px);
+background: rgba(255,255,255,0.15);
 }
 
 @keyframes softGlow{
@@ -204,7 +206,7 @@ body{
 </div>
 
 <audio id="bg-music" loop>
-  <source src="yourmusic.mp3" type="audio/mpeg">
+  <source src="https://files.catbox.moe/4bjjfg.mp3" type="audio/mpeg">
 </audio>
 
 <script>
@@ -240,4 +242,5 @@ for(let i=0;i<25;i++){
 
 </body>
 </html>
+
 
