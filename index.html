@@ -44,18 +44,16 @@ body{
   width:90%;
   max-width:400px;
   text-align:center;
-  backdrop-filter:blur(20px);
-  background:rgba(255,255,255,0.08);
-  padding:30px 20px;
+  backdrop-filter:blur(25px);
+  -webkit-backdrop-filter:blur(25px);
+  background:rgba(0,0,0,0.55); 
+  padding:35px 25px;
   border-radius:25px;
-  box-shadow:0 0 25px #ffb6e6;
-  animation:softGlow 3s infinite alternate;
+  border:1px solid rgba(255,255,255,0.15);
+  box-shadow:0 0 40px rgba(255,182,230,0.6);
   position:relative;
   z-index:2;
-  backdrop-filter: blur(25px);
-background: rgba(255,255,255,0.15);
 }
-
 @keyframes softGlow{
   from{ box-shadow:0 0 20px #ffb6e6; }
   to{ box-shadow:0 0 50px #ffcce6; }
@@ -72,8 +70,9 @@ background: rgba(255,255,255,0.15);
 
 .bio{
   font-size:14px;
-  margin-bottom:15px;
-  word-wrap:break-word;
+  margin-bottom:18px;
+  color:#ffd6f5;
+  text-shadow:0 0 6px #000;
 }
 
 .links{
@@ -100,7 +99,6 @@ background: rgba(255,255,255,0.15);
   transform:scale(1.05);
 }
 
-/* Scrollbar pastel */
 .links::-webkit-scrollbar{
   width:8px;
 }
@@ -242,5 +240,4 @@ for(let i=0;i<25;i++){
 
 </body>
 </html>
-
 
