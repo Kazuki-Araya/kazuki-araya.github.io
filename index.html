@@ -46,7 +46,7 @@ body{
   text-align:center;
   backdrop-filter:blur(25px);
   -webkit-backdrop-filter:blur(25px);
-  background:rgba(0,0,0,0.55); 
+  background:rgba(0,0,0,0.55); /* tối hơn */
   padding:35px 25px;
   border-radius:25px;
   border:1px solid rgba(255,255,255,0.15);
@@ -109,18 +109,25 @@ body{
 
 .scroll-btn{
   position:absolute;
-  bottom:-35px;
+  bottom:-40px;
   left:50%;
   transform:translateX(-50%);
-  font-size:26px;
-  animation:floatDown 1.5s infinite;
+  font-size:32px;
   cursor:pointer;
+  animation:animeFloat 2s ease-in-out infinite;
+  text-shadow:
+    0 0 10px #ffb6e6,
+    0 0 20px #ff69b4;
+  transition:0.3s;
 }
 
-@keyframes floatDown{
-  0%{transform:translate(-50%,0);}
-  50%{transform:translate(-50%,8px);}
-  100%{transform:translate(-50%,0);}
+.scroll-btn:hover{
+  transform:translateX(-50%) scale(1.2) rotate(10deg);
+}
+
+@keyframes animeFloat{
+  0%,100%{ transform:translate(-50%,0); }
+  50%{ transform:translate(-50%,8px); }
 }
 
 .music-btn{
@@ -176,7 +183,7 @@ body{
 <h2>Kazuki Araya</h2>
 
 <p class="bio">
- Wibu 🌸 Gamer 🎮 Student 📚 Anime Lover 💖
+   Wibu 🌸 Gamer 🎮 Student 📚 Anime Lover 💖
 </p>
 
 <div class="links">
@@ -191,7 +198,9 @@ body{
   <a class="link" href="https://t.me/kazuki_araya" target="_blank"><i class="fa-brands fa-telegram"></i> Telegram</a>
 </div>
 
-<div class="scroll-btn" onclick="scrollLinks()">⬇️</div>
+<div class="scroll-btn" onclick="scrollLinks()">
+  🌸
+</div>
 
 <div class="visualizer">
   <div class="bar"></div>
@@ -240,5 +249,4 @@ for(let i=0;i<25;i++){
 
 </body>
 </html>
-
 
