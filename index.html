@@ -410,9 +410,9 @@ function createSakura(){
 
   const depth = Math.random(); 
   const size = 14 + depth * 20;
-  const duration = 6000 + depth * 3000;
+  const duration = 6000 + depth * 5000;
   const startX = Math.random() * window.innerWidth;
-  const wind = (Math.random() - 0.5) * 80; // gió trái/phải random
+  const wind = (Math.random() - 0.5) * 80;
 
   sakura.style.position = "fixed";
   sakura.style.top = "-20px";
@@ -464,7 +464,7 @@ function createSakura(){
   }, duration);
 }
 
-setInterval(createSakura, 100);
+setInterval(createSakura, 200);
 const text = "Wibu 🌸 Gamer 🎮 Student 📚 Anime Lover 💖\n🏦MB:84822082009";
 let i = 0;
 function typingEffect(){
@@ -485,4 +485,5 @@ if(localStorage.getItem("theme") === "light"){
 
 </body>
 </html>
+
 
