@@ -22,7 +22,8 @@ body{
   justify-content:center;
   align-items:center;
   min-height:100vh;
-  overflow:hidden;
+  overflow-x:hidden;
+  overflow-y:auto;
   position:relative;
 }
 
@@ -82,6 +83,8 @@ body{
   max-height:230px;
   overflow-y:auto;
   padding-right:6px;
+ -webkit-overflow-scrolling: touch;
+  scroll-behavior:smooth;
 }
 
 .link{
@@ -172,20 +175,14 @@ body{
 </head>
 
 <body>
-
-
 <div class="container">
-
 <button class="music-btn" onclick="toggleMusic()">🎵 ON</button>
-
 <img src="https://avatarfiles.alphacoders.com/341/thumb-1920-341164.jpg" class="avatar">
-
 <h2>Kazuki Araya</h2>
-
 <p class="bio">
    Wibu 🌸 Gamer 🎮 Student 📚 Anime Lover 💖
+         84822082009 Mb bank🏦
 </p>
-
 <div class="links">
   <a class="link" href="tel:+84974841943"><i class="fa-solid fa-phone"></i> 0974841943</a>
   <a class="link" href="mailto:dinhhiep22082009@gmail.com"><i class="fa-solid fa-envelope"></i> Gmail</a>
@@ -197,11 +194,9 @@ body{
   <a class="link" href="https://locket.cam/kazuki.araya" target="_blank"><i class="fa-solid fa-lock"></i> Locket</a>
   <a class="link" href="https://t.me/kazuki_araya" target="_blank"><i class="fa-brands fa-telegram"></i> Telegram</a>
 </div>
-
 <div class="scroll-btn" onclick="scrollLinks()">
   🌸
 </div>
-
 <div class="visualizer">
   <div class="bar"></div>
   <div class="bar"></div>
@@ -209,9 +204,7 @@ body{
   <div class="bar"></div>
   <div class="bar"></div>
 </div>
-
 </div>
-
 <audio id="bg-music" loop>
   <source src="https://files.catbox.moe/4bjjfg.mp3" type="audio/mpeg">
 </audio>
@@ -246,7 +239,5 @@ for(let i=0;i<25;i++){
   document.body.appendChild(sakura);
 }
 </script>
-
 </body>
 </html>
-
