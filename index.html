@@ -52,6 +52,18 @@ body::after{
   overflow-x:hidden;
   scroll-behavior:smooth;
   transition:0.5s;
+  content:"";
+  position:fixed;
+  inset:0;
+  background:
+    linear-gradient(
+      to bottom,
+      rgba(255,140,0,0.3),
+      rgba(255,105,180,0.2),
+      rgba(0,0,0,0.4)
+    );
+  pointer-events:none;
+  z-index:0;
 }
 
 #intro{
@@ -397,20 +409,7 @@ body.light .container{
   0%{transform:rotate(0deg);}
   100%{transform:rotate(360deg);}
 }
-body::after{
-  content:"";
-  position:fixed;
-  inset:0;
-  background:
-    linear-gradient(
-      to bottom,
-      rgba(255,140,0,0.3),
-      rgba(255,105,180,0.2),
-      rgba(0,0,0,0.4)
-    );
-  pointer-events:none;
-  z-index:0;
-}
+
 #sakura-canvas{
   position:fixed;
   top:0;
@@ -559,7 +558,9 @@ canvas.height = window.innerHeight;
 
 let petals = [];
 
-for(let i=0;i<80;i++){
+let petalCount = window.innerWidth < 768 ? 35 : 80;
+
+for(let i=0;i<petalCount;i++){
   petals.push({
     x:Math.random()*canvas.width,
     y:Math.random()*canvas.height,
@@ -575,13 +576,14 @@ function drawPetal(p){
   ctx.save();
   ctx.translate(p.x,p.y);
   ctx.rotate(p.rotation);
-
   ctx.globalAlpha = 0.6 + p.depth*0.4;
-
   ctx.fillStyle = "#ffb6c1";
+if(window.innerWidth > 768){
   ctx.shadowColor = "#ff69b4";
   ctx.shadowBlur = 20 * p.depth;
-
+}else{
+  ctx.shadowBlur = 0;
+}
   ctx.beginPath();
   ctx.ellipse(0,0,p.size,p.size*0.6,0,0,Math.PI*2);
   ctx.fill();
@@ -589,7 +591,17 @@ function drawPetal(p){
   ctx.restore();
 }
 
-function animate(){
+let lastTime = 0;
+
+function animate(time){
+  if(window.innerWidth < 768){
+    if(time - lastTime < 30){
+      requestAnimationFrame(animate);
+      return;
+    }
+    lastTime = time;
+  }
+
   ctx.clearRect(0,0,canvas.width,canvas.height);
 
   petals.forEach(p=>{
