@@ -7,6 +7,13 @@
 <link rel="apple-touch-icon" sizes="180x180" href="5841e641-5c9f-4684-9944-c0cfaee6b05f.png?v=5">
 <meta name="theme-color" content="#ff69b4">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+ <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#ff69b4">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Kazuki Araya">
+<link rel="apple-touch-icon" href="icon-192.png">
 
 <style>
 *{
@@ -18,11 +25,28 @@
 
 body{
   background:
-  linear-gradient(rgba(0,0,0,0.5),rgba(0,0,0,0.5)),
-  url("https://png.pngtree.com/background/20250802/pngtree-a-pink-tree-with-flowers-on-the-water-surrounded-by-white-image_17691469.webp")
-  no-repeat center center/cover;
+    linear-gradient(rgba(255,182,193,0.4),rgba(255,228,240,0.6)),
+    url("https://png.pngtree.com/background/20250802/pngtree-a-pink-tree-with-flowers-on-the-water-surrounded-by-white-image_17691469.webp")
+    no-repeat center center/cover;
   background-attachment:fixed;
 
+  color:white;
+  display:flex;
+  justify-content:center;
+  min-height:100vh;
+  padding:60px 20px;
+  overflow-x:hidden;
+  scroll-behavior:smooth;
+  transition:0.5s;
+}
+body::after{
+  content:"";
+  position:fixed;
+  inset:0;
+  background:radial-gradient(circle at top right,
+    rgba(255,255,255,0.4),
+    transparent 60%);
+  pointer-events:none;
   color:white;
   display:flex;
   justify-content:center;
@@ -163,7 +187,16 @@ body{
 h2{
   font-size:26px;
   margin-bottom:8px;
-  text-shadow:0 0 20px #ff69b4;
+  background:linear-gradient(90deg,#ff69b4,#ff1493,#ffb6c1,#ff69b4);
+  background-size:300%;
+  -webkit-background-clip:text;
+  -webkit-text-fill-color:transparent;
+  animation:gradientMove 4s linear infinite;
+}
+
+@keyframes gradientMove{
+  0%{background-position:0%;}
+  100%{background-position:300%;}
 }
 .real-name{
   font-size:15px;
@@ -190,10 +223,7 @@ h2{
 
 .link{
   display:block;
-}
-
-.link{
-  position:relative;
+   position:relative;
   overflow:hidden;
   text-decoration:none;
   padding:15px;
@@ -346,7 +376,7 @@ body.light .container{
     opacity: 0;
   }
 }
-/* ===== Sakura Premium Glow Border ===== */
+
 
 .container::before{
   content:"";
@@ -370,12 +400,35 @@ body.light .container{
   0%{transform:rotate(0deg);}
   100%{transform:rotate(360deg);}
 }
+body::after{
+  content:"";
+  position:fixed;
+  inset:0;
+  background:
+    linear-gradient(
+      to bottom,
+      rgba(255,140,0,0.3),
+      rgba(255,105,180,0.2),
+      rgba(0,0,0,0.4)
+    );
+  pointer-events:none;
+  z-index:0;
+}
+#sakura-canvas{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  pointer-events:none;
+  z-index:1;
+}
 
 </style>
 </head>
 
 <body>
-
+<canvas id="sakura-canvas"></canvas>
 <div id="intro">
   <h1 class="intro-text">Kazuki Araya 🌸</h1>
   <div class="flash"></div>
@@ -386,6 +439,9 @@ body.light .container{
 
 <h2>Kazuki Araya</h2>
 <h3 class="real-name">Trương Đình Hiệp</h3>
+<div class="level-bar">
+  <div class="level-fill"></div>
+</div>
 
 
 <p class="bio"><span id="typing"></span></p>
@@ -449,7 +505,7 @@ if (window.innerWidth > 768) {
 
   document.addEventListener("mousemove",function(e){
     let spark=document.createElement("div");
-    spark.innerHTML="❤️";
+    spark.innerHTML="💗";
     spark.style.position="fixed";
     spark.style.left=e.clientX+"px";
     spark.style.top=e.clientY+"px";
@@ -478,72 +534,10 @@ document.querySelectorAll(".link").forEach(link=>{
 });
 
 document.querySelector(".avatar").addEventListener("dblclick",()=>{
-  document.body.style.background="black";
+  document.body.style.background =
+  "url('https://i.postimg.cc/brLdSGVs/1008885.jpg') no-repeat center center/cover";
 });
 
-
-function createSakura(){
-
-  const sakura = document.createElement("div");
-  sakura.innerHTML = "🌸";
-
-  const depth = Math.random(); 
-  const size = 14 + depth * 20;
-  const duration = 6000 + depth * 5000;
-  const startX = Math.random() * window.innerWidth;
-  const wind = (Math.random() - 0.5) * 80;
-
-  sakura.style.position = "fixed";
-  sakura.style.top = "-20px";
-  sakura.style.left = startX + "px";
-  sakura.style.fontSize = size + "px";
-  sakura.style.pointerEvents = "none";
-  sakura.style.zIndex = "1";
-  sakura.style.opacity = 0.7 + depth * 0.3;
-  sakura.style.willChange = "transform";
-
-  sakura.animate([
-    { transform: `translate(0px, 0px) rotate(0deg)` },
-    { transform: `translate(${wind}px, 110vh) rotate(360deg)` }
-  ], {
-    duration: duration,
-    easing: "linear",
-    fill: "forwards"
-  });
-
-  document.body.appendChild(sakura);
-
-  const trailInterval = setInterval(()=>{
-    const rect = sakura.getBoundingClientRect();
-
-    const spark = document.createElement("div");
-    spark.innerHTML = "❤️";
-    spark.style.position = "fixed";
-    spark.style.left = rect.left + "px";
-    spark.style.top = rect.top + "px";
-    spark.style.fontSize = "10px";
-    spark.style.pointerEvents = "none";
-    spark.style.opacity = "0.8";
-    spark.style.zIndex = "1";
-    spark.style.transition = "1s ease-out";
-
-    document.body.appendChild(spark);
-
-    setTimeout(()=>{
-      spark.style.opacity="0";
-      spark.style.transform="translateY(15px)";
-      setTimeout(()=>spark.remove(),1000);
-    },50);
-
-  },300);
-
-  setTimeout(()=>{
-    clearInterval(trailInterval);
-    sakura.remove();
-  }, duration);
-}
-
-setInterval(createSakura, 200);
 const text = "Wibu 🌸 Gamer 🎮 Student 📚 Anime Lover 💖\n🏦MB:84822082009";
 let i = 0;
 function typingEffect(){
@@ -560,9 +554,77 @@ window.addEventListener("scroll",()=>{
 if(localStorage.getItem("theme") === "light"){
   document.body.classList.add("light");
 }
+const canvas = document.getElementById("sakura-canvas");
+const ctx = canvas.getContext("2d");
+
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+let petals = [];
+
+for(let i=0;i<80;i++){
+  petals.push({
+    x:Math.random()*canvas.width,
+    y:Math.random()*canvas.height,
+    size:Math.random()*12+8,
+    speedY:Math.random()*0.5+0.3,
+    speedX:Math.random()*1+0.5,
+    rotation:Math.random()*360,
+    depth:Math.random()
+  });
+}
+
+function drawPetal(p){
+  ctx.save();
+  ctx.translate(p.x,p.y);
+  ctx.rotate(p.rotation);
+
+  ctx.globalAlpha = 0.6 + p.depth*0.4;
+
+  ctx.fillStyle = "#ffb6c1";
+  ctx.shadowColor = "#ff69b4";
+  ctx.shadowBlur = 20 * p.depth;
+
+  ctx.beginPath();
+  ctx.ellipse(0,0,p.size,p.size*0.6,0,0,Math.PI*2);
+  ctx.fill();
+
+  ctx.restore();
+}
+
+function animate(){
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+
+  petals.forEach(p=>{
+    p.y += p.speedY + p.depth;
+    p.x += p.speedX * (p.depth+0.3);
+    p.rotation += 0.002;
+
+    if(p.y > canvas.height+20){
+      p.y = -20;
+      p.x = Math.random()*canvas.width;
+    }
+
+    drawPetal(p);
+  });
+
+  requestAnimationFrame(animate);
+}
+
+animate();
+
+window.addEventListener("resize",()=>{
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+});
+if ("serviceWorker" in navigator) {
+  window.addEventListener("load", () => {
+    navigator.serviceWorker.register("./sw.js")
+      .then(() => console.log("SW registered"))
+      .catch(err => console.log("SW error:", err));
+  });
+}
 </script>
 
 </body>
 </html>
-
-
