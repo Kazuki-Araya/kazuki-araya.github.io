@@ -19,7 +19,11 @@
   box-sizing:border-box;
   font-family:'Poppins',sans-serif;
 }
-
+html, body {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
 body{
   background:
     linear-gradient(rgba(255,182,193,0.4),rgba(255,228,240,0.6)),
@@ -552,10 +556,16 @@ if(localStorage.getItem("theme") === "light"){
 }
 const canvas = document.getElementById("sakura-canvas");
 const ctx = canvas.getContext("2d");
-
 canvas.width = window.innerWidth;
+canvas.style.willChange = "transform";
 canvas.height = window.innerHeight;
+function resizeCanvas(){
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+}
 
+resizeCanvas();
+window.addEventListener("resize", resizeCanvas);
 let petals = [];
 
 let petalCount = window.innerWidth < 768 ? 35 : 80;
@@ -633,6 +643,7 @@ if ("serviceWorker" in navigator) {
       .catch(err => console.log("SW error:", err));
   });
 }
+
 </script>
 
 </body>
