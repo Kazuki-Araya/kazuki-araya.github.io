@@ -769,15 +769,12 @@ window.openSecret = function(){
 };
 
 
-// ===== SECRET ROOM =====
 function openSecretRoom(){
 
-  // 🎵 Nhạc riêng
   const secretMusic = new Audio("https://files.catbox.moe/2nej05.mp3");
   secretMusic.loop = true;
   secretMusic.play();
 
-  // 🌸 Sakura riêng
   const sakuraCanvas = document.createElement("canvas");
   sakuraCanvas.style.position="fixed";
   sakuraCanvas.style.inset="0";
@@ -820,7 +817,6 @@ function openSecretRoom(){
   const petalInterval = setInterval(createPetal,200);
   animatePetals();
 
-  // ✨ Overlay Secret
   let overlay=document.createElement("div");
   overlay.style.position="fixed";
   overlay.style.inset="0";
@@ -863,8 +859,6 @@ function openSecretRoom(){
   `;
 
   document.body.appendChild(overlay);
-
-  // Nút đóng
   document.getElementById("closeSecret").onclick = function(){
     secretMusic.pause();
     clearInterval(petalInterval);
