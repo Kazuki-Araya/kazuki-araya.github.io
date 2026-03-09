@@ -56,7 +56,6 @@ body::after{
   overflow-x:hidden;
   scroll-behavior:smooth;
   transition:0.5s;
-  content:"";
   position:fixed;
   inset:0;
   background:
@@ -242,7 +241,6 @@ h2{
   text-decoration:none;
   padding:15px;
   border-radius:18px;
-
   background:linear-gradient(
     135deg,
     rgba(255,255,255,0.2),
@@ -594,7 +592,7 @@ if(window.innerWidth>768){
     document.body.style.backgroundPosition=
     (50-e.clientX/50)+"% "+(50-e.clientY/50)+"%";
   });
-}
+};
 
 window.addEventListener("scroll",()=>{
   document.body.style.backgroundPositionY=
@@ -806,13 +804,13 @@ window.openSecret = function(){
   password = password.trim();
  checkPassword(password);
 
-  const correctHash = "c4b15117c4bb184df886707bcd68e6f5f21611be5923fc33dea324512e6c9ff3";
+const correctHash = "c4b15117c4bb184df886707bcd68e6f5f21611be5923fc33dea324512e6c9ff3";
 
 async function hash(text){
   const msgUint8 = new TextEncoder().encode(text);
   const hashBuffer = await crypto.subtle.digest("SHA-256", msgUint8);
   const hashArray = Array.from(new Uint8Array(hashBuffer));
-  return hashArray.map(b => b.toString(16).padStart(2,"0")).join("")
+  return hashArray.map(b => b.toString(16).padStart(2,"0")).join("");
 }
 
 async function checkPassword(password){
@@ -825,6 +823,17 @@ async function checkPassword(password){
   }
 }
 
+window.openSecret = function(){
+
+  let password = prompt("🔒 Nhập mật khẩu:");
+
+  if(password === null) return;
+
+  password = password.trim();
+
+  checkPassword(password);
+
+};
 
 function openSecretRoom(){
 
@@ -949,7 +958,7 @@ if("serviceWorker" in navigator){
   .catch(()=>{});
 }
 
-}); 
+};
 function startFireworks(){
 
   const fireCanvas = document.createElement("canvas");
@@ -1014,9 +1023,7 @@ function startFireworks(){
     setTimeout(()=>fireCanvas.remove(),3000);
   },15000);
 }
-
+});
 </script>
 </body>
 </html>
-
-
