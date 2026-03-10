@@ -27,7 +27,7 @@ html, body {
 body{
   background:
     linear-gradient(rgba(255,182,193,0.4),rgba(255,228,240,0.6)),
-    url("https://png.pngtree.com/background/20250802/pngtree-a-pink-tree-with-flowers-on-the-water-surrounded-by-white-image_17691469.webp")
+    url("https://w0.peakpx.com/wallpaper/118/84/HD-wallpaper-anime-landscape-spring-cherry-blossom-sakura-bloom-trees-path-anime.jpg")
     no-repeat center center/cover;
   background-attachment:fixed;
 
@@ -332,7 +332,7 @@ h2{
 .light{
   background:
   linear-gradient(rgba(255,255,255,0.5),rgba(255,255,255,0.5)),
-  url("https://png.pngtree.com/background/20250802/pngtree-a-pink-tree-with-flowers-on-the-water-surrounded-by-white-image_17691469.webp")
+  url("https://w0.peakpx.com/wallpaper/118/84/HD-wallpaper-anime-landscape-spring-cherry-blossom-sakura-bloom-trees-path-anime.jpg")
   no-repeat center center/cover;
   color:#111;
 }
@@ -352,7 +352,30 @@ body.light .container{
   top:-10px;
   font-size:18px;
   pointer-events:none;
-  animation:fall linear forwards;
+  animation:sakuraFall linear forwards;
+}
+@keyframes sakuraFall{
+  0%{
+    transform: translateY(-20px) translateX(0px) rotate(0deg);
+    opacity: 0.9;
+  }
+
+  25%{
+    transform: translateY(25vh) translateX(-20px) rotate(90deg);
+  }
+
+  50%{
+    transform: translateY(50vh) translateX(20px) rotate(180deg);
+  }
+
+  75%{
+    transform: translateY(75vh) translateX(-15px) rotate(270deg);
+  }
+
+  100%{
+    transform: translateY(110vh) translateX(0px) rotate(360deg);
+    opacity: 0;
+  }
 }
 
 @keyframes fall{
@@ -361,32 +384,6 @@ body.light .container{
 
 @media(max-width:768px){
   body{padding:40px 15px;}
-}@keyframes sakuraFall{
-  0%{
-    transform: translateY(-20px) rotate(0deg);
-    opacity: 0.9;
-  }
-  100%{
-    transform: translateY(110vh) rotate(360deg);
-    opacity: 0;
-  }
-    0%{
-    transform: translateY(-20px) translateX(0px) rotate(0deg);
-    opacity: 0.9;
-  }
-  25%{
-    transform: translateY(25vh) translateX(-20px) rotate(90deg);
-  }
-  50%{
-    transform: translateY(50vh) translateX(20px) rotate(180deg);
-  }
-  75%{
-    transform: translateY(75vh) translateX(-15px) rotate(270deg);
-  }
-  100%{
-    transform: translateY(110vh) translateX(0px) rotate(360deg);
-    opacity: 0;
-  }
 }
 
 
@@ -535,7 +532,7 @@ body.light .container{
 </div>
 
 <div class="links">
-  <a class="link" href="#" onclick="openAbout(); return false;">🌸 information</a>
+  <a class="link" href="#" onclick="openAbout(); return false;">information</a>
  <a class="link" href="mailto:dinhhiep22082009@gmail.com"><i class="fa-solid fa-envelope"></i> Gmail</a>
   <a class="link" href="https://web.facebook.com/kazukii.araya/" target="_blank"><i class="fa-brands fa-facebook"></i> Facebook</a>
   <a class="link" href="https://www.instagram.com/kazuki_araya2208" target="_blank"><i class="fa-brands fa-instagram"></i> Instagram</a>
@@ -557,7 +554,7 @@ body.light .container{
 </audio>
 
 <audio id="click-sound">
-  <source src="https://www.myinstants.com/media/sounds/mouse-click.mp3" type="audio/mpeg">
+  <source src="https://files.catbox.moe/5nmsv9.mp3" type="audio/mpeg">
 </audio>
 
 <script>
@@ -566,7 +563,46 @@ document.addEventListener("DOMContentLoaded", function(){
 if(localStorage.getItem("theme")==="light"){
   document.body.classList.add("light");
 }
+const sakuraCanvas = document.getElementById("sakura-canvas");
+const ctx = sakuraCanvas.getContext("2d");
 
+sakuraCanvas.width = window.innerWidth;
+sakuraCanvas.height = window.innerHeight;
+
+let petals = [];
+
+function createPetal(){
+  petals.push({
+    x: Math.random()*sakuraCanvas.width,
+    y: -20,
+    size: Math.random()*6+4,
+    speed: Math.random()*2+1,
+    drift: Math.random()*2-1
+  });
+}
+
+function animatePetals(){
+  ctx.clearRect(0,0,sakuraCanvas.width,sakuraCanvas.height);
+
+  petals.forEach((p,i)=>{
+    p.y += p.speed;
+    p.x += p.drift;
+
+    ctx.fillStyle="#ffb7c5";
+    ctx.beginPath();
+    ctx.ellipse(p.x,p.y,p.size,p.size*0.6,Math.PI/4,0,Math.PI*2);
+    ctx.fill();
+
+    if(p.y > sakuraCanvas.height){
+      petals.splice(i,1);
+    }
+  });
+
+  requestAnimationFrame(animatePetals);
+}
+
+setInterval(createPetal,200);
+animatePetals();
 window.toggleTheme=function(){
   document.body.classList.toggle("light");
   localStorage.setItem("theme",
@@ -637,7 +673,7 @@ setInterval(updateClock,1000);
 updateClock();
 
 document.addEventListener("copy",()=>{
-  alert("Nè~ đừng copy linh tinh nhaaa 🥺💗");
+  alert(" đừng copy linh tinh nhaaa");
 });
 
 function calculateAge(birthDate){
@@ -756,7 +792,7 @@ days + " ngày " + hours + " giờ ";
 const birthday=new Date(2009,7,22);
 const ageEl=document.getElementById("age");
 if(ageEl){
-  ageEl.innerHTML="🌸 "+calculateAge(birthday)+" tuổi";
+  ageEl.innerHTML=" "+calculateAge(birthday)+" tuổi";
 }
 updateBirthdayCountdown();
 setInterval(updateBirthdayCountdown,1000);
@@ -797,7 +833,7 @@ if (avatar) {
 }
 window.openSecret = function(){
 
-  let password = prompt("🔒 Nhập mật khẩu:");
+  let password = prompt(" Nhập mật khẩu:");
 
   if(password === null) return;
 
@@ -819,13 +855,13 @@ async function checkPassword(password){
   if(inputHash === correctHash){
     openSecretRoom();
   }else{
-    alert("Sai mật khẩu rồi đó~ 😤");
+    alert("Sai mật khẩu ");
   }
 }
 
 window.openSecret = function(){
 
-  let password = prompt("🔒 Nhập mật khẩu:");
+  let password = prompt(" Nhập mật khẩu:");
 
   if(password === null) return;
 
@@ -879,6 +915,10 @@ function openSecretRoom(){
     });
     requestAnimationFrame(animatePetals);
   }
+  window.addEventListener("resize",()=>{
+  sakuraCanvas.width = window.innerWidth;
+  sakuraCanvas.height = window.innerHeight;
+});
 
   const petalInterval = setInterval(createPetal,200);
   animatePetals();
@@ -906,7 +946,7 @@ function openSecretRoom(){
     color:white;
   ">
     <h2 id="secretTitle">Waifu Phòng Riêng 💕</h2>
-    <p>sao bạn đoán đc mk vậy😀 ~</p>
+    <p>Xin chao ~</p>
     <p>📞 0974841943</p>
 
     <a href="https://web.facebook.com/coco.panna77"
