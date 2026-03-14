@@ -1,6 +1,6 @@
 <head>
 <meta charset="UTF-8">
-<title>Kazuki Araya |BốHiệpVĩĐại</title>
+<title>Kazuki Araya |Trương Đình Hiệp</title>
 <link rel="icon" type="image/png" sizes="32x32" href="5841e641-5c9f-4684-9944-c0cfaee6b05f.png?v=5">
 <link rel="icon" type="image/png" sizes="192x192" href="5841e641-5c9f-4684-9944-c0cfaee6b05f.png?v=5">
 <meta name="theme-color" content="#ff69b4">
@@ -68,7 +68,6 @@ body::after{
   pointer-events:none;
   z-index:0;
 }
-
 #intro{
   position:fixed;
   inset:0;
@@ -133,7 +132,7 @@ body::after{
   overflow-y:auto;
   text-align:center;
   overflow-x:hidden;   
-  backdrop-filter:blur(30px);
+  backdrop-filter:blur(10px);
   background:linear-gradient(
     135deg,
     rgba(255,182,193,0.25),
@@ -145,9 +144,8 @@ body::after{
   border-radius:30px;
   border:1px solid rgba(255,255,255,0.25);
 
-  box-shadow:
-    0 0 30px rgba(255,105,180,0.6),
-    0 0 60px rgba(255,20,147,0.4);
+box-shadow:
+  0 0 15px rgba(255,105,180,0.4);
 
   animation:fadeIn 1.2s ease;
   position:relative;
@@ -192,8 +190,10 @@ body::after{
   100%{box-shadow:0 0 15px #ff69b4;}
 }
 
+@media(max-width:768px){
 .avatar{
-  animation:glow 3s infinite;
+  animation:none;
+}
 }
 
 h2{
@@ -601,7 +601,8 @@ function animatePetals(){
   requestAnimationFrame(animatePetals);
 }
 
-setInterval(createPetal,200);
+const petalRate = window.innerWidth < 768 ? 600 : 200;
+setInterval(createPetal, petalRate);
 animatePetals();
 window.toggleTheme=function(){
   document.body.classList.toggle("light");
@@ -623,7 +624,7 @@ window.toggleMusic=function(){
   }
 };
 
-if(window.innerWidth>768){
+if(window.innerWidth>1024){
   document.addEventListener("mousemove",e=>{
     document.body.style.backgroundPosition=
     (50-e.clientX/50)+"% "+(50-e.clientY/50)+"%";
