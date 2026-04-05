@@ -597,22 +597,20 @@ opacity:0;
 
 <p class="bio"><span id="typing"></span></p>
 <div class="waifu-box">
-  こんにちは、みんな〜 💕
+  こんにちは、みんな
 </div>
 
 <div class="links">
   <a class="link" href="#" onclick="openAbout(); return false;">information</a>
- <a class="link" href="mailto:dinhhiep22082009@gmail.com"><i class="fa-solid fa-envelope"></i> Gmail</a>
+  <a class="link" href="mailto:dinhhiep22082009@gmail.com"><i class="fa-solid fa-envelope"></i> Gmail</a>
   <a class="link" href="https://web.facebook.com/kazukii.araya/" target="_blank"><i class="fa-brands fa-facebook"></i> Facebook</a>
-  <a class="link" href="https://www.instagram.com/kazuki_araya2208" target="_blank"><i class="fa-brands fa-instagram"></i> Instagram</a>
   <a class="link" href="https://www.tiktok.com/@kazuki.araya2208" target="_blank"><i class="fa-brands fa-tiktok"></i> TikTok</a>
+  <a class="link" href="https://www.instagram.com/kazuki_araya2208" target="_blank"><i class="fa-brands fa-instagram"></i> Instagram</a>
   <a class="link" href="https://discord.com/users/951463256457879582" target="_blank"><i class="fa-brands fa-discord"></i> Discord</a>
   <a class="link" href="https://locket.cam/kazuki.araya" target="_blank"><i class="fa-solid fa-lock"></i> Locket</a>
   <a class="link" href="https://t.me/kazuki_araya" target="_blank"><i class="fa-brands fa-telegram"></i> Telegram</a>
   <a class="link" href="https://www.threads.com/@kazuki_araya2208" target="_blank"><i class="fa-brands fa-threads"></i> Threads</a>
   <a class="link" href="https://x.com/omentino2208" target="_blank"><i class="fa-brands fa-x-twitter"></i> X</a>
-
-
 </div>
 
 <button class="music-btn" onclick="toggleMusic()">🎵 Play</button>
@@ -643,7 +641,7 @@ resizeCanvas();
 window.addEventListener("resize",resizeCanvas);
 
 let petals = [];
-const PETAL_COUNT = window.innerWidth < 768 ? 60 : 70;
+const PETAL_COUNT = window.innerWidth < 768 ? 40 : 50;
 
 class Petal{
   constructor(){
@@ -752,7 +750,7 @@ document.querySelectorAll(".link").forEach(link=>{
   });
 });
 
-const text="Wibu 🌸 Gamer 🎮 Student 📚 Anime Lover 💖\n🏦MB:84822082009";
+const text="Wibu 🌸 Gamer 🎮 Student 📚 Streamer 📷\n🏦MB:84822082009";
 let i=0;
 function typing(){
   const el=document.getElementById("typing");
@@ -767,7 +765,7 @@ typing();
 function updateClock(){
   const el=document.getElementById("anime-clock");
   if(!el) return;
-  el.innerHTML="🌸 HaNoi Time<br>"+
+  el.innerHTML="🌸 VietNam Time<br>"+
   new Date().toLocaleTimeString();
 }
 setInterval(updateClock,1000);
@@ -1051,7 +1049,7 @@ function openSecretRoom(){
     color:white;
   ">
     <h2 id="secretTitle">Waifu Phòng Riêng </h2>
-    <p>Xin chao ~</p>
+    <p>こんにちは</p>
     <p>📞 0974841943</p>
 
     <a href="https://web.facebook.com/coco.panna77"
