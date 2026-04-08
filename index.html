@@ -11,7 +11,6 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="Kazuki Araya">
 <link rel="apple-touch-icon" href="icon-192.png">
-
 <style>
 *{
   margin:0;
@@ -30,7 +29,6 @@ body{
     url("https://files.catbox.moe/x0vg9d.jpg")
     no-repeat center center/cover;
   background-attachment:fixed;
-
   color:white;
   display:flex;
   justify-content:center;
@@ -68,7 +66,6 @@ body::after{
   pointer-events:none;
   z-index:0;
 }
-
 #intro{
   position:fixed;
   inset:0;
@@ -81,12 +78,10 @@ body::after{
   animation:introFade 1.5s forwards;
   animation-delay:3s;
 }
-
 .intro-content{
   text-align:center;
   animation:introZoom 3s ease forwards;
 }
-
 .intro-title{
   font-size:48px;
   letter-spacing:4px;
@@ -97,7 +92,6 @@ body::after{
     0 0 60px #ff69b4;
   animation:titleGlow 2.5s ease-in-out infinite alternate;
 }
-
 .intro-sub{
   margin-top:10px;
   font-size:16px;
@@ -106,7 +100,6 @@ body::after{
   animation:subFade 2s ease forwards;
   animation-delay:1.2s;
 }
-
 .intro-flash{
   position:absolute;
   inset:0;
@@ -115,7 +108,6 @@ body::after{
   animation:introFlash 0.8s ease forwards;
   animation-delay:3.2s;
 }
-
 @keyframes introZoom{
   0%{
     transform:scale(0.6);
@@ -129,7 +121,6 @@ body::after{
     transform:scale(1);
   }
 }
-
 @keyframes titleGlow{
   from{
     text-shadow:
@@ -142,20 +133,17 @@ body::after{
       0 0 60px #ff1493;
   }
 }
-
 @keyframes subFade{
   to{
     opacity:1;
     transform:translateY(10px);
   }
 }
-
 @keyframes introFlash{
   0%{opacity:0;}
   50%{opacity:0.9;}
   100%{opacity:0;}
 }
-
 @keyframes introFade{
   to{
     opacity:0;
@@ -176,14 +164,11 @@ body::after{
     rgba(255,105,180,0.25),
     rgba(255,20,147,0.25)
   );
-
   padding:40px 25px;
   border-radius:30px;
   border:1px solid rgba(255,255,255,0.25);
-
 box-shadow:
   0 0 15px rgba(255,105,180,0.4);
-
   animation:fadeIn 1.2s ease;
   position:relative;
   z-index:10;
@@ -191,23 +176,19 @@ box-shadow:
 .container::-webkit-scrollbar{
   width:8px;
 }
-
 .container::-webkit-scrollbar-track{
   background:rgba(255,255,255,0.05);
   border-radius:10px;
 }
-
 .container::-webkit-scrollbar-thumb{
   background:linear-gradient(180deg,#ffb6d9,#ff69b4);
   border-radius:10px;
   box-shadow:0 0 10px #ff69b4;
 }
-
 @keyframes fadeIn{
   from{opacity:0; transform:translateY(30px);}
   to{opacity:1; transform:translateY(0);}
 }
-
 .avatar{
   width:130px;
   height:130px;
@@ -217,7 +198,6 @@ box-shadow:
   margin-bottom:20px;
   transition:0.4s;
 }
-
 .avatar:hover{
   transform:scale(1.08) rotate(3deg);
 }
@@ -226,13 +206,11 @@ box-shadow:
   50%{box-shadow:0 0 40px #ff1493;}
   100%{box-shadow:0 0 15px #ff69b4;}
 }
-
 @media(max-width:768px){
 .avatar{
   animation:none;
 }
 }
-
 h2{
   font-size:26px;
   margin-bottom:8px;
@@ -243,7 +221,6 @@ h2{
   -webkit-text-fill-color:transparent;
   animation:gradientMove 4s linear infinite;
 }
-
 @keyframes gradientMove{
   0%{background-position:0%;}
   100%{background-position:300%;}
@@ -270,102 +247,57 @@ h2{
   margin-bottom:40px;
   width:100%;
 }
-
-.link{
-  display:block;
-   position:relative;
-  overflow:hidden;
-  text-decoration:none;
-  padding:15px;
-  border-radius:18px;
-  background:linear-gradient(
-    135deg,
-    rgba(255,255,255,0.2),
-    rgba(255,182,193,0.25)
-  );
-
-  border:1px solid rgba(255,255,255,0.3);
-  color:white;
-  font-weight:500;
-  transition:0.4s ease;
-}
-
-.link:hover{
-  background:linear-gradient(
-    135deg,
-    #ff9ecf,
-    #ff69b4
-  );
-
-  box-shadow:
-    0 0 20px #ff69b4,
-    0 0 40px #ff1493;
-
-  transform:translateY(-4px) scale(1.05);
-}
-
 .link{
   position:relative;
-  overflow:hidden;
-  text-decoration:none;
+  display:block;
   padding:15px;
   border-radius:18px;
-  background:rgba(255,255,255,0.18);
-  border:1px solid rgba(255,255,255,0.2);
+  text-decoration:none;
   color:white;
   font-weight:500;
+  overflow:hidden;
+  background:rgba(255,255,255,0.18);
+  border:1px solid rgba(255,255,255,0.25);
   transition:0.3s;
 }
-
 .link:hover{
-  background:#ffb6e6;
-  box-shadow:0 0 25px #ff69b4;
-  transform:translateY(-3px) scale(1.04);
+  background:linear-gradient(135deg,#ff9ecf,#ff69b4);
+  box-shadow:0 0 25px #ff69b4, 0 0 40px #ff1493;
+  transform:translateY(-4px) scale(1.05);
 }
 .link::before{
   content:"";
   position:absolute;
-  top:0;
+  inset:0;
   left:-100%;
-  width:100%;
-  height:100%;
   background:linear-gradient(120deg,transparent,rgba(255,255,255,0.5),transparent);
   transition:0.6s;
 }
-
 .link:hover::before{
   left:100%;
 }
-
-.music-btn, .theme-btn{
+.music-btn, 
+.theme-btn{
   position:absolute;
-  top:90px;  
+  top:90px;
   width:42px;
   height:42px;
   border-radius:50%;
   border:1px solid rgba(255,255,255,0.3);
-
   background:rgba(255,255,255,0.08);
   backdrop-filter:blur(10px);
-
   color:white;
   font-size:16px;
   cursor:pointer;
-  transition:0.3s ease;
+  transition:0.3s;
 }
-.theme-btn{
-  left:25px;
-}
-.music-btn{
-  right:25px;
-}
+.theme-btn{ left:25px; }
+.music-btn{ right:25px; }
 .music-btn:hover,
 .theme-btn:hover{
-  box-shadow:0 0 15px #ff69b4,
-             0 0 30px #ff1493;
   transform:scale(1.1);
+  box-shadow:0 0 15px #ff69b4, 0 0 30px #ff1493;
 }
-
 .light{
   background:
   linear-gradient(rgba(255,255,255,0.5),rgba(255,255,255,0.5)),
@@ -373,7 +305,6 @@ h2{
   no-repeat center center/cover;
   color:#111;
 }
-
 body.light .container{
   background:linear-gradient(
     135deg,
@@ -383,7 +314,6 @@ body.light .container{
   box-shadow:
     0 0 25px rgba(255,105,180,0.4);
 }
-
 .sakura{
 position:fixed;
 top:-10px;
@@ -409,8 +339,6 @@ opacity:0.6;
 @media(max-width:768px){
   body{padding:40px 15px;}
 }
-
-
 .container::before{
   content:"";
   position:absolute;
@@ -503,7 +431,6 @@ opacity:0.6;
   font-weight:600;
   transition:0.3s;
 }
-
 .secret-link:hover{
   text-shadow:0 0 10px #ff1493;
 }
@@ -515,14 +442,12 @@ opacity:0.6;
   margin-bottom:20px;
   overflow:hidden;
 }
-
 .level-fill{
   height:100%;
-  width:70%;
+  width:16%;
   background:linear-gradient(90deg,#ff69b4,#ff1493);
   animation:levelGlow 1.5s ease-in-out infinite alternate;
 }
-
 @keyframes levelGlow{
   from{ box-shadow:0 0 5px #ff69b4; }
   to{ box-shadow:0 0 20px #ff1493; }
@@ -536,42 +461,32 @@ align-items:center;
 background:black;
 z-index:99999;
 }
-
 .portal-circle{
-
 width:0;
 height:0;
-
 border-radius:50%;
-
 background:radial-gradient(
 circle,
 #ff69b4,
 #ff1493,
 black
 );
-
 animation:portalOpen 1.2s forwards;
 }
-
 @keyframes portalOpen{
-
 0%{
 width:0;
 height:0;
 opacity:1;
 }
-
 100%{
 width:200vw;
 height:200vw;
 opacity:0;
 }
-
 }
 </style>
 </head>
-
 <body>
 <canvas id="sakura-canvas"></canvas>
 <div id="anime-clock"></div>
@@ -583,9 +498,7 @@ opacity:0;
   <div class="intro-flash"></div>
 </div>
 <div class="container">
-
 <img src="https://avatarfiles.alphacoders.com/341/thumb-1920-341164.jpg" class="avatar">
-
 <h2>Kazuki Araya</h2>
 <h3 class="real-name">Trương Đình Hiệp</h3>
 <p id="age"class="age-text"></p>
@@ -593,13 +506,10 @@ opacity:0;
 <div class="level-bar">
 <div class="level-fill"></div>
 </div>
-
-
 <p class="bio"><span id="typing"></span></p>
 <div class="waifu-box">
   こんにちは、みんな
 </div>
-
 <div class="links">
   <a class="link" href="#" onclick="openAbout(); return false;">information</a>
   <a class="link" href="mailto:dinhhiep22082009@gmail.com"><i class="fa-solid fa-envelope"></i> Gmail</a>
@@ -612,20 +522,52 @@ opacity:0;
   <a class="link" href="https://www.threads.com/@kazuki_araya2208" target="_blank"><i class="fa-brands fa-threads"></i> Threads</a>
   <a class="link" href="https://x.com/omentino2208" target="_blank"><i class="fa-brands fa-x-twitter"></i> X</a>
 </div>
-
 <button class="music-btn" onclick="toggleMusic()">🎵 Play</button>
 <button class="theme-btn" onclick="toggleTheme()">🌙</button>
-
 <audio id="bg-music" loop>
   <source src="https://files.catbox.moe/2nej05.mp3" type="audio/mpeg">
 </audio>
-
 <audio id="click-sound">
   <source src="https://files.catbox.moe/5nmsv9.mp3" type="audio/mpeg">
 </audio>
-
 <script>
-
+document.addEventListener("keydown", function(e){
+  if (
+    e.key === "F12" ||
+    (e.ctrlKey && e.shiftKey && ["I","J","C"].includes(e.key)) ||
+    (e.ctrlKey && e.key === "U")
+  ){
+    e.preventDefault();
+    return false;
+  }
+});
+document.addEventListener("contextmenu", e => e.preventDefault());
+setInterval(function(){
+  if (
+    window.outerWidth - window.innerWidth > 160 ||
+    window.outerHeight - window.innerHeight > 160
+  ){
+    document.body.innerHTML = `
+      <div style="
+        display:flex;
+        justify-content:center;
+        align-items:center;
+        height:100vh;
+        background:blur;
+        color:#ff69b4;
+        font-size:24px;
+        text-align:center;
+        font-weight:bold;
+      ">
+        xem xem cai lon
+      </div>
+    `;
+  }
+}, 1000);
+document.addEventListener("copy", function(e){
+  e.preventDefault();
+});
+document.addEventListener("selectstart", e => e.preventDefault());
 document.addEventListener("DOMContentLoaded", function(){
 if(localStorage.getItem("theme")==="light"){
   document.body.classList.add("light");
@@ -639,10 +581,8 @@ function resizeCanvas(){
 }
 resizeCanvas();
 window.addEventListener("resize",resizeCanvas);
-
 let petals = [];
 const PETAL_COUNT = window.innerWidth < 768 ? 40 : 50;
-
 class Petal{
   constructor(){
     this.depth = Math.random(); 
@@ -678,13 +618,10 @@ class Petal{
     ctx.restore();
   }
 }
-
 for(let i=0;i<PETAL_COUNT;i++){
   petals.push(new Petal());
 }
-
 let lastTime = 0;
-
 function animate(time){
   if(time-lastTime < 33){
     requestAnimationFrame(animate);
@@ -697,22 +634,18 @@ function animate(time){
     p.update();
     p.draw();
   });
-
   requestAnimationFrame(animate);
 }
-
 animate();
 window.toggleTheme=function(){
   document.body.classList.toggle("light");
   localStorage.setItem("theme",
     document.body.classList.contains("light")?"light":"dark");
 };
-
 window.toggleMusic=function(){
   const music=document.getElementById("bg-music");
   const btn=document.querySelector(".music-btn");
   if(!music) return;
-
   if(music.paused){
     music.play();
     if(btn) btn.innerHTML="⏸ Pause";
@@ -721,14 +654,12 @@ window.toggleMusic=function(){
     if(btn) btn.innerHTML="🎵 Play";
   }
 };
-
 if(window.innerWidth>1024){
   document.addEventListener("mousemove",e=>{
     document.body.style.backgroundPosition=
     (50-e.clientX/50)+"% "+(50-e.clientY/50)+"%";
   });
 };
-
 window.addEventListener("scroll",()=>{
   document.body.style.backgroundPositionY=
   window.scrollY*0.3+"px";
@@ -737,7 +668,6 @@ document.querySelectorAll(".link").forEach(link=>{
   link.addEventListener("click",e=>{
     let sound=document.getElementById("click-sound");
     if(sound) sound.play();
-
     let heart=document.createElement("div");
     heart.innerHTML="💖";
     heart.style.position="fixed";
@@ -749,7 +679,6 @@ document.querySelectorAll(".link").forEach(link=>{
     setTimeout(()=>heart.remove(),800);
   });
 });
-
 const text="Wibu 🌸 Gamer 🎮 Student 📚 Streamer 📷\n🏦MB:84822082009";
 let i=0;
 function typing(){
@@ -765,16 +694,14 @@ typing();
 function updateClock(){
   const el=document.getElementById("anime-clock");
   if(!el) return;
-  el.innerHTML="🌸 VietNam Time<br>"+
+  el.innerHTML=" VietNam Time<br>"+
   new Date().toLocaleTimeString();
 }
 setInterval(updateClock,1000);
 updateClock();
-
 document.addEventListener("copy",()=>{
   alert("U need handwritten");
 });
-
 function calculateAge(birthDate){
   const today=new Date();
   let age=today.getFullYear()-birthDate.getFullYear();
@@ -785,7 +712,6 @@ function calculateAge(birthDate){
   return age;
 }
 window.openAbout=function(){
-
   let about=document.createElement("div");
   about.style.position="fixed";
   about.style.inset="0";
@@ -795,7 +721,6 @@ window.openAbout=function(){
   about.style.justifyContent="center";
   about.style.alignItems="center";
   about.style.zIndex="99999";
-
   about.innerHTML=`
     <div style="
       background:rgba(255,105,180,0.2);
@@ -806,35 +731,27 @@ window.openAbout=function(){
       max-width:350px;
       width:90%;
     ">
-
-      <h1>Trương Đình Hiệp 🌸</h1>
-
+      <h1>Trương Đình Hiệp </h1>
       <p>my birthday: 22/08/2009</p>
       <p id="age-popup" class="age-text"></p>
-
       <p>ĐT419, Hòa Phú, Chương Mỹ, Hà Nội, Việt Nam</p>
-
       <p>
         <img src="https://upload.wikimedia.org/wikipedia/commons/f/fc/Valorant_logo_-_pink_color_version.svg"
         style="width:16px;vertical-align:middle;margin-right:5px;">
         Valorant
       </p>
-
       <p>
         <img src="https://i.pinimg.com/736x/ed/c7/c5/edc7c5fd981c44e2dfc533688f28d6c8.jpg"
         style="width:16px;vertical-align:middle;margin-right:5px;">
         Liên Quân Mobile
       </p>
-
       <p>
         <img src="https://cdn.aptoide.com/imgs/2/6/e/26efce289cdd092aff6e13b9ab53cf18_icon.png"
         style="width:16px;vertical-align:middle;margin-right:5px;">
         Đấu Trường Chân Lý
       </p>
-
       <p>📚 THPT Chương Mỹ B</p>
       <p>💖 Nakano Miku</p>
-
       <button style="
         margin-top:15px;
         padding:8px 15px;
@@ -847,47 +764,37 @@ window.openAbout=function(){
       onclick="this.closest('div').parentElement.remove()">
         Đóng
       </button>
-
     </div>
   `;
-
   document.body.appendChild(about);
-
-  
   const birth=new Date(2009,7,22);
   const agePopup=document.getElementById("age-popup");
   if(agePopup){
-    agePopup.innerHTML="🌸 "+calculateAge(birth)+" tuổi";
+    agePopup.innerHTML=" "+calculateAge(birth)+" tuổi";
   }
 };
-
 function updateBirthdayCountdown(){
   const now=new Date();
   const currentYear=now.getFullYear();
   let nextBirthday=new Date(currentYear,7,22);
-
   if(now>nextBirthday){
     nextBirthday=new Date(currentYear+1,7,22);
   }
-
   const diff=nextBirthday-now;
-
   const days=Math.floor(diff/(1000*60*60*24));
   const hours=Math.floor((diff/(1000*60*60))%24);
   const minutes=Math.floor((diff/(1000*60))%60);
   const seconds=Math.floor((diff/1000)%60);
-
   const el=document.getElementById("birthday-countdown");
   if(el){
    el.innerHTML =
-'🎂 <span class="birthday-effect">My birthday will come later</span><br>' +
+' <span class="birthday-effect">My birthday will come later</span><br>' +
 days + " ngày " + hours + " giờ ";
   }
   if(days===0 && hours===0 && minutes===0 && seconds===0){
   startFireworks();
 }
 }
-
 const birthday=new Date(2009,7,22);
 const ageEl=document.getElementById("age");
 if(ageEl){
@@ -895,19 +802,13 @@ if(ageEl){
 }
 updateBirthdayCountdown();
 setInterval(updateBirthdayCountdown,1000);
-
 const avatar = document.querySelector(".avatar");
 let clickTimeout;
-
 if (avatar) {
-
   avatar.addEventListener("click", (e) => {
     clearTimeout(clickTimeout);
-
     clickTimeout = setTimeout(() => {
-    
       document.body.classList.add("blush");
-
       for (let i = 0; i < 10; i++) {
         let heart = document.createElement("div");
         heart.innerHTML = "💖";
@@ -919,80 +820,56 @@ if (avatar) {
         document.body.appendChild(heart);
         setTimeout(() => heart.remove(), 1000);
       }
-
       setTimeout(() => document.body.classList.remove("blush"), 800);
-
     }, 250); 
   });
-
   avatar.addEventListener("dblclick", () => {
     clearTimeout(clickTimeout);
     openSecret();
   });
 }
 window.openSecret = function(){
-
   let password = prompt(" Nhập mật khẩu:");
-
   if(password === null) return;
-
-  password = password.trim();
- checkPassword(password);
-
+password = password.trim();
+checkPassword(password);
 const correctHash = "c4b15117c4bb184df886707bcd68e6f5f21611be5923fc33dea324512e6c9ff3";
-
 async function hash(text){
   const msgUint8 = new TextEncoder().encode(text);
   const hashBuffer = await crypto.subtle.digest("SHA-256", msgUint8);
   const hashArray = Array.from(new Uint8Array(hashBuffer));
   return hashArray.map(b => b.toString(16).padStart(2,"0")).join("");
 }
-
 async function checkPassword(password){
   const inputHash = await hash(password);
-
   if(inputHash === correctHash){
-
 openPortal(()=>{
 openSecretRoom();
 });
-
 }else{
     alert("Sai mật khẩu ");
   }
 }
-
 window.openSecret = function(){
-
   let password = prompt(" Nhập mật khẩu:");
-
   if(password === null) return;
-
   password = password.trim();
-
   checkPassword(password);
-
 };
-
 function openSecretRoom(){
-
   const secretMusic = new Audio("https://files.catbox.moe/2nej05.mp3");
   secretMusic.loop = true;
   secretMusic.play();
-
   const sakuraCanvas = document.createElement("canvas");
   sakuraCanvas.style.position="fixed";
   sakuraCanvas.style.inset="0";
   sakuraCanvas.style.zIndex="99998";
   sakuraCanvas.style.pointerEvents="none";
   document.body.appendChild(sakuraCanvas);
-
   const ctx = sakuraCanvas.getContext("2d");
   sakuraCanvas.width = window.innerWidth;
   sakuraCanvas.height = window.innerHeight;
-
   let petals = [];
-
   function createPetal(){
     petals.push({
       x: Math.random()*sakuraCanvas.width,
@@ -1002,7 +879,6 @@ function openSecretRoom(){
       drift: Math.random()*2-1
     });
   }
-
   function animatePetals(){
     ctx.clearRect(0,0,sakuraCanvas.width,sakuraCanvas.height);
     petals.forEach((p,i)=>{
@@ -1022,10 +898,8 @@ function openSecretRoom(){
   sakuraCanvas.width = window.innerWidth;
   sakuraCanvas.height = window.innerHeight;
 });
-
   const petalInterval = setInterval(createPetal,200);
   animatePetals();
-
   let overlay=document.createElement("div");
   overlay.style.position="fixed";
   overlay.style.inset="0";
@@ -1035,7 +909,6 @@ function openSecretRoom(){
   overlay.style.zIndex="99999";
   overlay.style.background="linear-gradient(rgba(0,0,0,0.8),rgba(255,105,180,0.4))";
   overlay.style.backdropFilter="blur(15px)";
-
  overlay.innerHTML=`
   <div style="
     background:rgba(255,255,255,0.15);
@@ -1051,16 +924,13 @@ function openSecretRoom(){
     <h2 id="secretTitle">Waifu Phòng Riêng </h2>
     <p>こんにちは</p>
     <p>📞 0974841943</p>
-
     <a href="https://web.facebook.com/coco.panna77"
        target="_blank"
        class="secret-link"
        id="hiddenPortal">
         Hidden Portal
     </a>
-
     <br>
-
     <button id="closeSecret"
       style="
       margin-top:15px;
@@ -1075,16 +945,12 @@ function openSecretRoom(){
     </button>
   </div>
 `;
-
   document.body.appendChild(overlay);
   let clickCount = 0;
-
 const secretTitle = document.getElementById("secretTitle");
 const hiddenLink = document.getElementById("hiddenPortal");
-
 secretTitle.addEventListener("click",()=>{
   clickCount++;
-
   if(clickCount === 3){
     hiddenLink.style.display = "inline-block";
   }
@@ -1100,23 +966,18 @@ if("serviceWorker" in navigator){
   navigator.serviceWorker.register("./sw.js")
   .catch(()=>{});
 }
-
 };
 function startFireworks(){
-
   const fireCanvas = document.createElement("canvas");
   fireCanvas.style.position="fixed";
   fireCanvas.style.inset="0";
   fireCanvas.style.pointerEvents="none";
   fireCanvas.style.zIndex="99999";
   document.body.appendChild(fireCanvas);
-
   const fctx = fireCanvas.getContext("2d");
   fireCanvas.width = window.innerWidth;
   fireCanvas.height = window.innerHeight;
-
   let particles=[];
-
   function createFirework(x,y){
     for(let i=0;i<80;i++){
       particles.push({
@@ -1129,29 +990,23 @@ function startFireworks(){
       });
     }
   }
-
   function animateFire(){
     fctx.clearRect(0,0,fireCanvas.width,fireCanvas.height);
-
     particles.forEach((p,index)=>{
       p.x += Math.cos(p.angle)*p.speed;
       p.y += Math.sin(p.angle)*p.speed;
       p.alpha -= 0.02;
-
       fctx.globalAlpha = p.alpha;
       fctx.beginPath();
       fctx.arc(p.x,p.y,p.radius,0,Math.PI*2);
       fctx.fillStyle = "hsl("+Math.random()*360+",100%,60%)";
       fctx.fill();
-
       if(p.alpha<=0){
-        particles.splice(index,1);
+      particles.splice(index,1);
       }
     });
-
     requestAnimationFrame(animateFire);
   }
-
   animateFire();
   let fireInterval=setInterval(()=>{
     createFirework(
