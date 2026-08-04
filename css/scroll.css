@@ -1,0 +1,64 @@
+/* Scroll Animations - GPU friendly: only opacity + transform */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px) translateZ(0);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  backface-visibility: hidden;
+}
+
+.reveal.active,
+.reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0) translateZ(0);
+}
+
+/* Hero section should always be visible */
+#hero {
+  opacity: 1 !important;
+  transform: none !important;
+}
+
+/* Staggered animation for child elements */
+.reveal.active .section-panel {
+  animation: slideUp 0.6s ease-out;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px) translateZ(0);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) translateZ(0);
+  }
+}
+
+/* content-visibility for off-screen sections — reduces paint cost */
+section {
+  content-visibility: auto;
+  contain-intrinsic-size: auto 600px;
+}
+
+/* Override for visible sections that always render */
+#hero {
+  content-visibility: visible;
+}
+
+@media (max-width: 768px) {
+  section {
+    content-visibility: auto;
+    contain-intrinsic-size: 0 500px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    transition: none;
+    opacity: 1;
+    transform: none;
+  }
+  .reveal.active .section-panel {
+    animation: none;
+  }
+}

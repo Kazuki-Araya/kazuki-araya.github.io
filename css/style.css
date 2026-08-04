@@ -1,0 +1,194 @@
+/* Hero Section - Mobile Height Expansion */
+@media (max-width: 768px) {
+  .hero-panel {
+    padding: 20px 16px;
+    gap: 16px;
+  }
+}
+
+/* Hero Quote */
+.hero-quote {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 12px 0 16px;
+  padding: 10px 16px;
+  background: rgba(255, 255, 255, 0.04);
+  border-left: 3px solid var(--accent);
+  border-radius: 0 10px 10px 0;
+  font-size: 0.92rem;
+  color: var(--muted);
+  font-style: italic;
+  max-width: 500px;
+}
+.hero-quote .quote-icon {
+  color: var(--accent);
+  font-size: 0.85rem;
+  flex-shrink: 0;
+}
+
+/* About - Hobbies & Games */
+.about-intro {
+  font-size: 1.05rem;
+  color: var(--text);
+  margin-bottom: 18px;
+  line-height: 1.5;
+}
+.about-hobbies,
+.about-games {
+  margin-top: 18px;
+}
+.about-hobbies h3,
+.about-games h3 {
+  font-size: 0.95rem;
+  color: var(--accent);
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+.hobbies-list,
+.games-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.hobby-tag,
+.game-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 14px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  font-size: 0.85rem;
+  color: var(--text);
+  transition: transform 0.3s ease, background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease, opacity 0.3s ease;
+  will-change: transform, opacity;
+  cursor: default;
+}
+.hobby-tag:hover,
+.game-tag:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: var(--accent);
+  color: var(--accent);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(255, 105, 180, 0.2);
+}
+.hobby-tag i,
+.game-tag i {
+  font-size: 0.8rem;
+  opacity: 0.7;
+}
+.hobby-tag:hover i,
+.game-tag:hover i {
+  opacity: 1;
+}
+
+/* Theme Toggle Switch Component */
+.theme-toggle {
+  width: 64px;
+  height: 32px;
+  padding: 4px;
+  border-radius: 9999px;
+  cursor: pointer;
+  transition: transform 0.3s ease, background-color 0.3s ease, border-color 0.3s ease, opacity 0.3s ease;
+  will-change: transform, opacity;
+  border: 1px solid;
+  display: flex;
+  align-items: center;
+  gap: 0;
+  background: rgba(24, 24, 27, 1);
+  border-color: rgba(39, 39, 42, 1);
+  position: relative;
+}
+
+body.light .theme-toggle {
+  background: #ffffff;
+  border-color: rgba(228, 228, 231, 1);
+}
+
+.theme-toggle-thumb {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  transition: transform 0.3s ease, background 0.3s ease;
+  will-change: transform;
+  background: rgba(39, 39, 42, 1);
+  flex-shrink: 0;
+  z-index: 1;
+}
+
+body.light .theme-toggle-thumb {
+  transform: translateX(32px);
+  background: rgba(229, 229, 229, 1);
+}
+
+.theme-toggle-icon {
+  width: 16px;
+  height: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  transition: opacity 0.3s ease;
+  flex-shrink: 0;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 2;
+  pointer-events: none;
+}
+
+.theme-toggle-icon.moon {
+  left: 6px;
+  color: #ffffff;
+  opacity: 1;
+}
+
+body.light .theme-toggle-icon.moon {
+  color: #666666;
+  opacity: 0.4;
+}
+
+.theme-toggle-icon.sun {
+  right: 6px;
+  color: #999999;
+  opacity: 0.4;
+}
+
+body.light .theme-toggle-icon.sun {
+  color: #000000;
+  opacity: 1;
+}
+
+/* Render optimizations: lazy-render sections and hint heavy filter elements */
+.section,
+.section-panel,
+.glass-panel,
+.widget,
+.gallery-polaroid {
+  content-visibility: auto;
+  contain-intrinsic-size: 600px;
+  will-change: transform, opacity;
+}
+
+.electric-border::before,
+.electric-border::after,
+.portal-circle,
+.link-popup-content {
+  will-change: filter, opacity, transform;
+  contain: paint;
+}
+
+/* Hint heavy backdrop-filter elements to avoid unexpected repaints */
+.music-player-modal,
+.music-player-content,
+.hero-panel,
+.glass-panel,
+.widget-header {
+  will-change: backdrop-filter, filter, opacity;
+}

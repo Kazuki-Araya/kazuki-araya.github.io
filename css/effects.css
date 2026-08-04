@@ -1,0 +1,138 @@
+.sakura{
+  position:fixed;
+  top:0;
+  left:0;
+  width:18px;
+  height:18px;
+  pointer-events:none;
+  will-change:transform,opacity;
+  transform:translateZ(0);
+  backface-visibility:hidden;
+  z-index:999;
+}
+/* ❄️ GPU-friendly fall animation: only transform + opacity */
+.sakura{
+  animation:sakuraFall linear forwards;
+}
+@keyframes sakuraFall{
+  0%{
+    transform:translateY(-10px) translateZ(0) rotate(0deg);
+    opacity:1;
+  }
+  100%{
+    transform:translateY(110vh) translateZ(0) rotate(360deg);
+    opacity:0.6;
+  }
+}
+@keyframes fall{
+  to{transform:translateY(110vh) translateZ(0) rotate(360deg);}
+}
+#sakura-canvas{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  height:100%;
+  pointer-events:none;
+  z-index:1;
+  will-change:transform;
+  transform:translateZ(0);
+}
+@media (max-width:768px){
+  #sakura-canvas{
+    z-index:1;
+  }
+}
+.spark {
+  position: fixed;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #EC4899;
+  pointer-events: none;
+  z-index: 999999;
+  animation: sparkFly 0.4s ease-out forwards;
+  will-change:transform,opacity;
+  transform:translateZ(0);
+}
+@keyframes sparkFly {
+  to {
+    transform: translate(var(--tx), var(--ty)) scale(0) translateZ(0);
+    opacity: 0;
+  }
+}
+  .electric-border {
+    position: relative;
+    display: block;
+    width: 100%;
+    margin: 0 auto;
+  }
+  .electric-border.hero-frame {
+    max-width: 1120px;
+  }
+  #electricCanvas {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 20;
+    will-change:transform;
+    transform:translateZ(0);
+  }
+  .electric-border::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 30px;
+    border: 1px solid rgba(255, 105, 180, 0.25);
+    filter: blur(1px);
+    z-index: 5;
+  }
+  .electric-border::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 30px;
+    background: linear-gradient(
+      135deg,
+      rgba(255, 105, 180, 0.18),
+      transparent,
+      rgba(255, 20, 147, 0.18)
+    );
+    filter: blur(18px);
+    z-index: -1;
+  }
+  
+.portal{
+  position:fixed;
+  inset:0;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  background:black;
+  z-index:99999;
+}
+.portal-circle{
+  width:0;
+  height:0;
+  border-radius:50%;
+  background:radial-gradient(
+    circle,
+    #ff69b4,
+    #ff1493,
+    black);
+  animation:portalOpen 1.2s forwards;
+  will-change:width,height,opacity;
+  transform:translateZ(0);
+}
+@keyframes portalOpen{
+  0%{
+    width:0;
+    height:0;
+    opacity:1;
+  }
+  100%{
+    width:200vw;
+    height:200vw;
+    opacity:0;
+  }
+}

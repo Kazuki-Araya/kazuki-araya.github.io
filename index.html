@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="UTF-8">
+<title>Kazuki Araya</title>
+<meta name="description" content="Kazuki Araya — anime-inspired portfolio with Discord presence, GitHub stats, Spotify music, and visitor tracking.">
+<meta name="robots" content="index, follow">
+<link class="favicon" rel="icon" type="image/png" sizes="32x32" href="assets/images/site-image.png">
+<link class="favicon" rel="icon" type="image/png" sizes="192x192" href="assets/images/site-image.png">
+<link rel="apple-touch-icon" href="assets/images/icon-192.png">
+<meta name="theme-color" content="#0e0619">
+<link rel="preconnect" href="https://cdn.jsdelivr.net">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.5.2/css/all.min.css">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<link rel="manifest" href="manifest.json">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Kazuki Araya">
+<link rel="stylesheet" href="css/base.css?v=1.0.2">
+<link rel="stylesheet" href="css/layout.css?v=1.0.2">
+<link rel="stylesheet" href="css/effects.css?v=1.0.2">
+<link rel="stylesheet" href="css/widgets.css?v=1.0.2">
+  <link rel="stylesheet" href="css/birthday.css?v=1.0.3">
+  <link rel="stylesheet" href="css/discord.css?v=1.0.3">
+  <link rel="stylesheet" href="css/spotify.css?v=1.0.1">
+  <link rel="stylesheet" href="css/style.css?v=1.0.3">
+  <link rel="stylesheet" href="css/loading.css?v=1.0.0">
+  <link rel="stylesheet" href="css/cursor.css?v=1.0.0">
+  <link rel="stylesheet" href="css/scroll.css?v=1.0.0">
+</head>
+<body>
+  <video muted loop playsinline preload="none" id="bg-video" poster="assets/images/site-image.png" playsinline>
+    <source src="assets/videos/background.mp4" type="video/mp4">
+  </video>
+  <canvas id="sakura-canvas"></canvas>
+  
+  <div id="intro">
+    <div class="intro-content">
+      <h1 class="intro-title" id="intro-title-text"></h1>
+      <div class="aurora-button-container">
+        <div class="aurora-button-glow"></div>
+        <button class="aurora-button">Click here</button>
+      </div>
+    </div>
+    <div class="intro-flash"></div>
+  </div>
+
+  <div class="fluid-menu-container" id="fluid-menu">
+    <div class="menu-items-wrapper">
+      <div class="menu-item trigger" id="menu-trigger">
+        <div class="icon-box">
+          <i class="fas fa-bars icon-menu"></i>
+          <i class="fas fa-times icon-close"></i>
+        </div>
+      </div>
+      
+      <a href="#hero" class="menu-item sub-item"><i class="fas fa-house"></i></a>
+      <a href="#about" class="menu-item sub-item"><i class="fas fa-circle-info"></i></a>
+      <a href="#gallery" class="menu-item sub-item"><i class="fas fa-images"></i></a>
+      <a href="#projects" class="menu-item sub-item"><i class="fas fa-gamepad"></i></a>
+      <a href="#game-ids" class="menu-item sub-item"><i class="fas fa-id-card-clip"></i></a>
+      <a href="javascript:void(0)" class="menu-item sub-item" id="menu-social-trigger" title="Social Accounts"><i class="fas fa-link"></i></a>
+      <a href="#contact" class="menu-item sub-item"><i class="fas fa-paper-plane"></i></a>
+    </div>
+  </div>
+
+  <main>
+  <section id="hero" class="hero-section">
+    <div class="electric-border hero-frame">
+      <canvas id="electricCanvas"></canvas>
+      <div class="container hero-panel">
+          <div class="hero-head">
+            <div class="hero-avatar-wrap">
+              <img src="assets/images/avatar.jpg" class="avatar" width="130" height="130" alt="Kazuki Araya avatar" fetchpriority="high">
+              <div class="status-badge" aria-live="polite"><i class="fas fa-circle" id="discord-status-dot"></i><span id="discord-status">Checking Discord...</span></div>
+            </div>
+            <div class="hero-copy">
+              <p class="hero-eyebrow">My Profile</p>
+              <h1>Kazuki Araya</h1>
+              <p class="hero-subtitle">Trương Đình Hiệp</p>
+              <p class="hero-description">Game, anime and cigarette</p>
+              <div class="role-typing">
+                <span id="typing"></span><span class="typing-cursor" aria-hidden="true">|</span>
+              </div>
+              
+              <div class="hero-quote">
+                <i class="fas fa-quote-left quote-icon"></i>
+                <span>SaiGon Peach,SaiGon Melon,lottus and ThangLong</span>
+                <div class="hero-donate">Buy me a coffee: 84822082009 (MB Bank)</div>
+              </div>
+              
+              <div class="hero-meta">
+                <span class="visitor-counter"><i class="fas fa-eye"></i><strong id="visitor-count">0</strong> visitors</span>
+                <span class="countdown-birthday"><i class="fas fa-cake-candles"></i>Sinh nhật sau: <strong id="birthday-countdown">Loading...</strong><button type="button" id="test-fireworks-btn" style="display:none;background:none;border:none;cursor:pointer;font-size:16px;padding:0 4px;vertical-align:middle;" title="Test fireworks">🎉</button></span>
+              </div>
+              
+              <div class="hero-actions">
+                <a class="button button-primary" href="#contact">Connect with me</a>
+                <a class="button button-primary" href="#about">My Information </a>
+              </div>
+            </div>
+          </div>
+
+          <div class="hero-widgets-grid">
+            <!-- Mini Music Bar - thin flush bar, no background/border -->
+            <div class="mini-music-bar" aria-label="Background Music Player">
+              <div class="mini-music-bar-inner">
+                <i class="fas fa-music mini-music-icon"></i>
+                <span id="gh-song-title" class="mini-music-title">Bengier kurwy v3</span>
+                <div class="mini-music-controls">
+                  <button type="button" id="gh-play-btn" class="mini-ctrl-btn" title="Play/Pause"><i class="fas fa-play"></i></button>
+                </div>
+              </div>
+              <div class="mini-music-progress-wrap" id="gh-progress-wrap">
+                <div class="mini-music-progress-fill" id="gh-progress-fill"></div>
+              </div>
+            </div>
+
+            <!-- Discord + Spotify row -->
+            <div class="widgets-bottom-row">
+              <div class="widget discord-activity-widget" aria-label="Discord Live Activity">
+                <div class="widget-header">
+                  <i class="fab fa-discord"></i>
+                  <span>Discord Activity</span>
+                  <span class="widget-status-tag"><i class="fas fa-circle" id="widget-discord-dot"></i> <span id="widget-discord-status-text">Offline</span></span>
+                </div>
+                <div class="widget-content">
+                  <div class="discord-activity-display">
+                    <div class="activity-assets-wrap">
+                      <img id="discord-activity-image" src="assets/images/discord.webp" alt="Activity status">
+                      <div id="discord-activity-fallback-icon" class="activity-fallback">
+                        <i class="fab fa-discord"></i>
+                      </div>
+                    </div>
+                    <div class="activity-details-wrap">
+                      <h4 id="discord-activity-name">Không có hoạt động</h4>
+                      <p id="discord-activity-details">Đang không làm gì cả...</p>
+                      <div id="discord-spotify-progress-block" class="spotify-progress-box">
+                        <span id="discord-spotify-current">0:00</span>
+                        <div class="spotify-bar-bg">
+                          <div id="discord-spotify-fill" class="spotify-bar-fill"></div>
+                        </div>
+                        <span id="discord-spotify-total">0:00</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="widget spotify-now-playing-widget" id="spotify-realtime-widget" aria-label="Spotify Now Playing">
+                <div class="widget-header">
+                  <i class="fab fa-spotify"></i>
+                  <span>Spotify</span>
+                  <span class="widget-status-tag" id="spotify-status-text">
+                    <i class="fas fa-circle" id="spotify-status-dot"></i>
+                    <span id="spotify-playing-status">Đang kiểm tra...</span>
+                  </span>
+                </div>
+                <div class="widget-content">
+                  <div class="spotify-now-playing">
+                    <div class="spotify-cover-wrap">
+                      <img id="spotify-album-cover" src="assets/images/discord.webp" alt="Album cover" loading="lazy">
+                      <div class="spotify-cover-fallback">
+                        <i class="fab fa-spotify"></i>
+                      </div>
+                    </div>
+                    <div class="spotify-track-info">
+                      <h4 id="spotify-track-name">Không có bài hát</h4>
+                      <p id="spotify-track-artist">Chưa nghe nhạc gần đây</p>
+                      <div id="spotify-progress-block" class="spotify-progress-box" style="display:none">
+                        <span id="spotify-progress-current">0:00</span>
+                        <div class="spotify-bar-bg">
+                          <div id="spotify-progress-fill" class="spotify-bar-fill"></div>
+                        </div>
+                        <span id="spotify-progress-total">0:00</span>
+                      </div>
+                      <div id="spotify-fallback-msg" style="font-size:0.8rem;opacity:0.6;margin-top:4px;">
+                        <i class="fas fa-history"></i> Bài gần nhất
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+    <section id="about" class="section reveal">
+      <div class="section-panel glass-panel">
+        <div class="section-header">
+          <span class="section-label">About Me</span>
+          <h2>Thông tin</h2>
+        </div>
+        <div class="about-grid">
+          <div>
+            <p class="about-intro">Welcome to my bio</p>
+            <div class="about-facts">
+              <div><strong>Name</strong> Kazuki Araya</div>
+              <div><strong>Real Name</strong> Trương Đình Hiệp</div>
+              <div><strong>Age</strong> <span id="age"></span></div>
+              <div><strong>Birthday</strong> 22/08/2009</div>
+              <div><strong>Location</strong> Hà Nội, Việt Nam</div>
+              <div><strong>My Waifu</strong> Nakano Miku </div>
+            </div>
+            <div class="about-hobbies">
+              <h3><i class="fas fa-heart"></i> Hobbies</h3>
+              <div class="hobbies-list">
+                <span class="hobby-tag"><i class="fas fa-gamepad"></i> Gaming</span>
+                <span class="hobby-tag"><i class="fas fa-tv"></i> Anime</span>
+                <span class="hobby-tag"><i class="fas fa-music"></i> Music</span>
+                <span class="hobby-tag"><i class="fas fa-code"></i>Programming</span>
+                  <span class="hobby-tag"><i class="fas fa-smoking"></i>Smoking</span>
+                </div>
+            </div>
+            <div class="about-games">
+              <h3><i class="fas fa-gamepad"></i>The Game Player</h3>
+              <div class="games-list">
+                <span class="game-tag">VALORANT</span>
+                <span class="game-tag">Liên Quân</span>
+                <span class="game-tag">TFT</span>
+                <span class="game-tag">Genshin Impact</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="gallery" class="section reveal">
+      <div class="section-panel glass-panel">
+        <div class="section-header">
+          <span class="section-label">Photo Gallery</span>
+          <h2>Memorable Moments</h2>
+        </div>
+        <div class="gallery-polaroid">
+          <div class="gallery-polaroid-item">
+            <img src="assets/images/dies.jpg" alt="Ride or dies" loading="lazy">
+            <div class="polaroid-label"> Ride or dies</div>
+          </div>
+          <div class="gallery-polaroid-item">
+            <img src="assets/images/hobbies.jpg" alt="My hobbies" loading="lazy">
+            <div class="polaroid-label"> My hobbies</div>
+          </div>
+          <div class="gallery-polaroid-item">
+            <img src="assets/images/thuha.jpg" alt="Day ones" loading="lazy">
+            <div class="polaroid-label">ルル姫</div>
+          </div>
+          <div class="gallery-polaroid-item">
+            <img src="assets/images/rank valorant.jpg" alt="My peak rank" loading="lazy">
+            <div class="polaroid-label"> My peak rank</div>
+          </div>
+          <div class="gallery-polaroid-item">
+            <img src="assets/images/wife.jpg" alt="My Wife" loading="lazy">
+            <div class="polaroid-label"> My Wife</div>
+          </div>
+          <div class="gallery-polaroid-item">
+            <img src="assets/images/Nafra.jpg" alt="Genshin" loading="lazy">
+            <div class="polaroid-label">The second wife</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects" class="section reveal">
+      <div class="section-panel glass-panel">
+        <div class="section-header">
+          <span class="section-label">Favorite Games</span>
+          <h2>My Favorite Games</h2>
+        </div>
+        <div class="project-grid">
+          <article class="project-card">
+            <img src="assets/images/valorant-logo.png" alt="VALORANT" class="project-cover" loading="lazy" decoding="async" fetchpriority="low">
+            <h3>VALORANT</h3>
+            <p>Dating app</p>
+            <a class="project-link" href="#contact">Thử rank</a>
+          </article>
+          <article class="project-card">
+            <img src="assets/images/lien-quan.png" alt="Liên Quân" class="project-cover" loading="lazy" decoding="async" fetchpriority="low">
+            <h3>Liên Quân</h3>
+            <p>Cày rank</p>
+            <a class="project-link" href="#contact">play</a>
+          </article>
+          <article class="project-card">
+            <img src="assets/images/tft-icon.jpg" alt="TFT" class="project-cover" loading="lazy" decoding="async" fetchpriority="low">
+            <h3>TFT</h3>
+            <p>Mua 17 nhu lozz</p>
+            <a class="project-link" href="#contact">Thử vận</a>
+          </article>
+          <article class="project-card">
+            <img src="assets/images/GI.jpg" alt="Genshin Impact" class="project-cover" loading="lazy" decoding="async" fetchpriority="low">
+            <h3>Genshin Impact</h3>
+            <p>Gacha đen</p>
+            <a class="project-link" href="#contact">Vào Teyvat</a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="game-ids" class="section">
+      <div class="section-panel glass-panel">
+        <div class="section-header">
+          <span class="section-label">Game IDs</span>
+          <h2>Copy my IDs</h2>
+        </div>
+        <div class="game-ids-grid">
+          <div class="game-id-card">
+            <h3>VALORANT</h3>
+            <div class="id-display">
+              <code id="valorant-id">Ngân Anh#meo</code>
+              <div class="copy-button-wrapper">
+                <button data-target="valorant-id" class="copy-button" title="Copy VALORANT ID" aria-label="Copy VALORANT ID">
+                  <span class="copy-icon">📋</span>
+                  <span class="check-icon">✓</span>
+                </button>
+                <div class="copy-tooltip">Copied!</div>
+              </div>
+            </div>
+          </div>
+          <div class="game-id-card">
+            <h3>Liên Quân</h3>
+            <div class="id-display">
+              <code id="lienquan-id">姓•┊Araya</code>
+              <div class="copy-button-wrapper">
+                <button data-target="lienquan-id" class="copy-button" title="Copy Liên Quân ID" aria-label="Copy Liên Quân ID">
+                  <span class="copy-icon">📋</span>
+                  <span class="check-icon">✓</span>
+                </button>
+                <div class="copy-tooltip">Copied!</div>
+              </div>
+            </div>
+          </div>
+          <div class="game-id-card">
+            <h3>Genshin Impact </h3>
+            <div class="id-display">
+              <code id="GI-id-1">865090946</code>
+              <div class="copy-button-wrapper">
+                <button data-target="GI-id-1" class="copy-button" title="Copy id game" aria-label="Copy id game">
+                  <span class="copy-icon">📋</span>
+                  <span class="check-icon">✓</span>
+                </button>
+                <div class="copy-tooltip">Copied!</div>
+              </div>
+            </div>
+          </div>
+          <div class="game-id-card">
+            <h3>TFT</h3>
+            <div class="id-display">
+              <code id="tft-id">Kazukiaraya#ruru</code>
+              <div class="copy-button-wrapper">
+                <button data-target="tft-id" class="copy-button" title="Copy TFT ID" aria-label="Copy TFT ID">
+                  <span class="copy-icon">📋</span>
+                  <span class="check-icon">✓</span>
+                </button>
+                <div class="copy-tooltip">Copied!</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section id="contact" class="section reveal">
+      <div class="section-panel glass-panel">
+        <div class="section-header">
+          <span class="section-label">Contact</span>
+          <h2>Connect with me</h2>
+        </div>
+        <div class="contact-grid">
+          <a class="contact-card" href="https://www.tiktok.com/@kazuki.araya2208" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-tiktok"></i> TikTok</a>
+          <a class="contact-card" href="https://web.facebook.com/kazukii.araya/" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-facebook"></i> Facebook</a>
+          <a class="contact-card" href="https://www.instagram.com/kazuki_araya2208" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-instagram"></i> Instagram</a>
+          <a class="contact-card" href="mailto:kazukiaraya@proton.me"><i class="fas fa-envelope"></i><span>kazukiaraya@proton.me</span></a>
+          <a class="contact-card" href="https://discord.com/users/951463256457879582" target="_blank" rel="noopener noreferrer"><i class="fab fa-discord"></i><span>Discord</span></a>
+          <a class="contact-card" href="https://t.me/kazuki_araya" target="_blank" rel="noopener noreferrer"><i class="fab fa-telegram"></i><span>Telegram</span></a>
+          <button type="button" class="contact-card contact-expand-btn" onclick="toggleLinks()" style="cursor:pointer;background:none;border:1px solid rgba(255,255,255,0.1);border-radius:12px;padding:16px;color:var(--text);font:inherit;font-size:0.9rem;display:flex;align-items:center;gap:10px;transition:all 0.3s ease;">
+            <i class="fas fa-link"></i> More info <i class="fas fa-chevron-right" style="font-size:0.7rem;margin-left:auto;"></i>
+          </button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div id="link-popup" class="link-popup" role="dialog" aria-modal="true" aria-hidden="true" aria-labelledby="linkPopupTitle">
+    <div class="link-popup-content">
+      <button class="link-popup-close" aria-label="Đóng danh sách liên kết">✕</button>
+      <h3 id="linkPopupTitle">Araya's Links</h3>
+      <div class="popup-links">
+        <a class="link" href="mailto:kazukiaraya@proton.me"><i class="fa-solid fa-envelope"></i> Mail: kazukiaraya@proton.me</a>
+        <a class="link" href="https://web.facebook.com/kazukii.araya/" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-facebook"></i> Facebook</a>
+        <a class="link" href="https://www.tiktok.com/@kazuki.araya2208" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-tiktok"></i> TikTok</a>
+        <a class="link" href="https://www.instagram.com/kazuki_araya2208" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-instagram"></i> Instagram</a>
+        <a class="link" href="https://discord.com/users/951463256457879582" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-discord"></i> Discord</a>
+        <a class="link" href="https://locket.cam/kazuki.araya" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-lock"></i> Locket</a>
+        <a class="link" href="https://t.me/kazuki_araya" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-telegram"></i> Telegram</a>
+        <a class="link" href="https://www.threads.com/@kazuki_araya2208" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-threads"></i> Threads</a>
+        <a class="link" href="https://x.com/omentino2208" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-x-twitter"></i> X</a>
+      </div>
+    </div>
+  </div>
+
+  <div id="music-player-modal" class="music-player-modal">
+    <div class="music-player-content">
+      <button type="button" class="player-close" aria-label="Close player">&times;</button>
+      <div class="player-cover">
+        <img id="player-cover-img" src="assets/images/avatar.jpg" alt="Album cover" loading="lazy">
+      </div>
+      <div class="player-info">
+        <h3 id="player-song-title">No song playing</h3>
+        <p id="player-artist">Unknown artist</p>
+      </div>
+      <div class="player-progress">
+        <span id="player-time-current">0:00</span>
+        <div class="progress-bar">
+          <div class="progress-fill" id="player-progress-fill"></div>
+          <input type="range" id="player-progress-input" min="0" max="100" value="0" class="progress-input">
+        </div>
+        <span id="player-time-total">0:00</span>
+      </div>
+      <div class="player-controls">
+        <button type="button" id="player-modal-prev" aria-label="Previous"><i class="fas fa-step-backward"></i></button>
+        <button type="button" id="player-modal-play" aria-label="Play/Pause"><i class="fas fa-play"></i></button>
+        <button type="button" id="player-modal-next" aria-label="Next"><i class="fas fa-step-forward"></i></button>
+      </div>
+      <div class="player-volume">
+        <i class="fas fa-volume-down"></i>
+        <input type="range" id="player-volume" min="0" max="100" value="50" class="volume-slider">
+        <i class="fas fa-volume-up"></i>
+      </div>
+      <div class="player-playlist">
+        <h4>Playlist</h4>
+        <div id="player-playlist-items"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="control-buttons">
+    <button type="button" id="open-music-player-btn" class="player-btn" aria-label="Open music player" title="Music Player">🎶</button>
+    <div id="theme-toggle" class="theme-toggle" role="button" tabindex="0" aria-label="Toggle theme" title="Dark/Light Mode">
+      <div class="theme-toggle-icon moon">🌙</div>
+      <div class="theme-toggle-thumb"></div>
+      <div class="theme-toggle-icon sun">☀️</div>
+    </div>
+  </div>
+
+  <audio id="bg-music" loop>
+    <source src="assets/audio/kazuki.mp3" type="audio/mpeg">
+  </audio>
+  <audio id="click-sound">
+    <source src="assets/audio/click-sound.mp3" type="audio/mpeg">
+  </audio>
+  <audio id="player-audio"></audio>
+
+  <button type="button" id="enable-effects-btn">Bật hiệu ứng</button>
+  <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script>
+  <script src="js/effects/loading.js?v=1.0.0" defer></script>
+  <script src="js/config.js?v=1.0.1" defer></script>
+  <script src="js/modules/title.js?v=1.0.1" defer></script>
+  <script src="js/modules/performance.js?v=1.0.1" defer></script>
+  <script src="js/modules/birthday.js?v=1.0.1" defer></script>
+  <script src="js/modules/discordPresence.js?v=1.0.1" defer></script>
+  <script src="js/modules/theme.js?v=1.0.1" defer></script>
+  <script src="js/modules/music.js?v=1.0.1" defer></script>
+  <script src="js/modules/intro.js?v=1.0.1" defer></script>
+  <script src="js/modules/typing.js?v=1.0.1" defer></script>
+  <script src="js/modules/profileWidgets.js?v=1.0.1" defer></script>
+  <script src="js/modules/age.js?v=1.0.1" defer></script>
+  <script src="js/modules/popup.js?v=1.0.1" defer></script>
+  <script src="js/modules/secret.js?v=1.0.1" defer></script>
+  <script src="js/modules/links.js?v=1.0.1" defer></script>
+  <script src="js/modules/musicPlayer.js?v=1.0.1" defer></script>
+  <script src="js/modules/visitor.js?v=1.0.2" defer></script>
+  <script src="js/modules/spotify.js?v=1.0.1" defer></script>
+  <script src="js/effects/sakura.js?v=1.0.1" defer></script> 
+  <script src="https://cdn.jsdelivr.net/npm/fireworks-js@2.10.8/dist/index.umd.js" defer></script>
+  <script src="js/effects/fireworks.js?v=2.0.0" defer></script>
+  <script src="js/effects/electricBorder.js?v=1.0.1" defer></script>
+  <script src="js/effects/cursor.js?v=1.0.0" defer></script>
+  <script src="js/effects/scroll.js?v=1.0.0" defer></script>
+  <script src="js/app.js?v=1.0.1" defer></script>
+  <script src="js/main.js?v=1.0.1" defer></script>
+</body>
+</html>

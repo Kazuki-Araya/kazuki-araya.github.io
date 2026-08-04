@@ -1,0 +1,73 @@
+#discord-activity-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 12px;
+}
+
+#discord-activity-fallback-icon {
+  display: none;
+  width: 100%;
+  height: 100%;
+  border-radius: 12px;
+  background: rgba(11, 7, 21, 0.7);
+  align-items: center;
+  justify-content: center;
+}
+
+#discord-spotify-progress-block {
+  display: none;
+}
+
+.widget-header .fa-music {
+  color: #ff69b4;
+}
+
+.widget-header .fa-discord {
+  color: #5865F2;
+}
+
+.music-player-modal {
+  display: none;
+}
+
+#enable-effects-btn {
+  display: none;
+  position: fixed;
+  right: 12px;
+  bottom: 84px;
+  z-index: 9999;
+  background: #ff69b4;
+  color: #fff;
+  border-radius: 24px;
+  padding: 8px 12px;
+  border: none;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  cursor: pointer;
+}
+
+#enable-effects-btn.show {
+  display: block;
+}
+
+.player-btn {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(255, 105, 180, 0.96);
+  color: #fff;
+  font-size: 20px;
+  cursor: pointer;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.18);
+}
+
+.control-buttons {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  z-index: 9999;
+}

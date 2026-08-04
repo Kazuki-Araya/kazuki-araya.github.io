@@ -1,0 +1,38 @@
+.hero-meta {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+.intro-content .aurora-button-container {
+  margin-top: 20px;
+  cursor: pointer;
+}
+
+.countdown-birthday {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 8px;
+  font-size: 0.9rem;
+  color: #ff69b4;
+  text-shadow: 0 0 8px rgba(255, 105, 180, 0.5);
+  font-weight: 500;
+}
+
+.countdown-birthday i {
+  margin-right: 6px;
+}
+
+#birthday-countdown {
+  color: inherit;
+}
+
+.birthday-effect {
+  display: inline-block;
+  padding: 0;
+  margin-bottom: 8px;
+  font-weight: 700;
+  text-shadow: 0 0 20px rgba(255, 105, 180, 0.3);
+}
