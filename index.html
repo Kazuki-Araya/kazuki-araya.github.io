@@ -89,7 +89,7 @@
               
               <div class="hero-quote">
                 <i class="fas fa-quote-left quote-icon"></i>
-                <span>SaiGon Peach,SaiGon Melon,lottus and ThangLong</span>
+                <span>SaiGon Peach,SaiGon Melon and ThangLong</span>
                 <div class="hero-donate">Buy me a coffee: 84822082009 (MB Bank)</div>
               </div>
               
@@ -110,9 +110,16 @@
             <div class="mini-music-bar" aria-label="Background Music Player">
               <div class="mini-music-bar-inner">
                 <i class="fas fa-music mini-music-icon"></i>
-                <span id="gh-song-title" class="mini-music-title">Bengier kurwy v3</span>
+                <div class="mini-music-title-wrap">
+                  <span id="gh-song-title" class="mini-music-title">HVL</span>
+                </div>
                 <div class="mini-music-controls">
+                  <button type="button" id="gh-prev-btn" class="mini-ctrl-btn" title="Previous"><i class="fas fa-step-backward"></i></button>
                   <button type="button" id="gh-play-btn" class="mini-ctrl-btn" title="Play/Pause"><i class="fas fa-play"></i></button>
+                  <button type="button" id="gh-next-btn" class="mini-ctrl-btn" title="Next"><i class="fas fa-step-forward"></i></button>
+                </div>
+                <div class="mini-music-time">
+                  <span id="gh-time-current">0:00</span> / <span id="gh-time-total">0:00</span>
                 </div>
               </div>
               <div class="mini-music-progress-wrap" id="gh-progress-wrap">
@@ -249,8 +256,8 @@
             <div class="polaroid-label"> My hobbies</div>
           </div>
           <div class="gallery-polaroid-item">
-            <img src="assets/images/thuha.jpg" alt="Day ones" loading="lazy">
-            <div class="polaroid-label">ルル姫</div>
+            <img src="assets/images/fire.jpg" alt="Day ones" loading="lazy">
+            <div class="polaroid-label">Gas lighter</div>
           </div>
           <div class="gallery-polaroid-item">
             <img src="assets/images/rank valorant.jpg" alt="My peak rank" loading="lazy">
@@ -313,7 +320,7 @@
           <div class="game-id-card">
             <h3>VALORANT</h3>
             <div class="id-display">
-              <code id="valorant-id">Ngân Anh#meo</code>
+              <code id="valorant-id">ヤニカッス#araya</code>
               <div class="copy-button-wrapper">
                 <button data-target="valorant-id" class="copy-button" title="Copy VALORANT ID" aria-label="Copy VALORANT ID">
                   <span class="copy-icon">📋</span>
@@ -448,8 +455,7 @@
     </div>
   </div>
 
-  <audio id="bg-music" loop>
-    <source src="assets/audio/kazuki.mp3" type="audio/mpeg">
+  <audio id="bg-music" preload="metadata" crossorigin="anonymous">
   </audio>
   <audio id="click-sound">
     <source src="assets/audio/click-sound.mp3" type="audio/mpeg">

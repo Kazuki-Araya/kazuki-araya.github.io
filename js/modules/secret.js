@@ -20,7 +20,7 @@ window.openSecret = async function(){
   }
 };
 function openSecretRoom(){
-  const secretMusic = new Audio("assets/audio/kazuki.mp3");
+  const secretMusic = new Audio("assets/audio/want u.m4a");
   secretMusic.loop = true;
   secretMusic.play().catch(()=>{});
   const sakuraCanvas = document.createElement("canvas");
